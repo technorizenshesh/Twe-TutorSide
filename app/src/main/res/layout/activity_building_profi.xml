@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.BuildingProfiActivity">
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_50"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_15"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/iv_back"
+                    android:layout_width="21dp"
+                    android:layout_height="21dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/margin_10"
+                    android:adjustViewBounds="true"
+                    android:onClick="backFromBuildingProfile"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/back"
+                    android:visibility="visible" />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/margin_20"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text=""
+                    android:textAlignment="center"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/textsize_20"
+                    android:textStyle="bold"
+                    android:visibility="invisible" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center_vertical"
+                    android:text="$8426"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/margin_15"
+                    android:textStyle="bold"
+                    android:visibility="invisible"
+                    tools:ignore="RtlCompat" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_20"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Building your profile"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/textsize_16"
+                    android:textStyle="bold" />
+
+
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                    android:progressTint="@android:color/holo_red_light"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_10"
+                    android:max="100"
+                    android:progress="10"
+                    android:background="@color/colorLightGray"
+
+                    />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_20"
+                    android:text="1.  Set up your first subject"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/textsize_16"
+                    android:textStyle="bold" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2.  Customize your profile"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/textsize_16"
+                    android:textStyle="bold" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="3.  Get ready for your first student"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/textsize_16"
+                    android:textStyle="bold" />
+
+
+            </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_margin="@dimen/margin_25"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txt_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Welcome to TWE, Ganesh! "
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/textsize_25"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_5"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:text="Let's take a moment to set up your\nprofile so students can find you. It will\ntake about 15 minutes."
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/textsize_16"
+                android:textStyle="bold" />
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/preiview"
+                android:layout_marginTop="@dimen/margin_15"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/textsize_15" />
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_20"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:text="we save progress between steps, so\nif you need to leave and come back,\nno problem."
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/textsize_16"
+                android:textStyle="bold" />
+
+
+
+
+
+
+
+        </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="@dimen/margin_280"
+                android:layout_height="@dimen/_45dp"
+                android:layout_marginLeft="@dimen/margin_20"
+                android:layout_marginRight="@dimen/margin_20"
+                android:layout_marginTop="@dimen/margin_20"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:onClick="createProfi"
+                android:background="@drawable/edit_bgbutton"
+                android:orientation="vertical">
+
+
+
+
+                <TextView
+                    android:id="@+id/tv_login"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Create My Profile"
+                    android:onClick="createProfi"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+
+            </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_20"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Building your profile"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/textsize_16"
+                android:textStyle="bold" />
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_5"
+                android:text="@string/txt_profi"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/textsize_15"/>
+
+
+
+        </LinearLayout>
+
+
+
+
+
+
+
+
+
+        </LinearLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+</RelativeLayout>

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "90138219326",
+    "project_id": "twe-tutorside",
+    "storage_bucket": "twe-tutorside.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:90138219326:android:69313cd2e8595765b2d26f",
+        "android_client_info": {
+          "package_name": "com.tech.twe_tutorside"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "90138219326-9sih3f6f3i1bgtjo2d3qounl8inke8mh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCLEs1iBOZxoyiE2dwO7tX5aVLfEHgo_20"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "90138219326-9sih3f6f3i1bgtjo2d3qounl8inke8mh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f8f9fe"
+    tools:context=".fragments.CategoryFragment1">
+
+    <ProgressBar
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_centerInParent="true"
+        android:id="@+id/progressBar"
+        android:background="@drawable/progresh_background"
+        android:elevation="6dp"
+        android:padding="5dp"
+        android:indeterminate="true"
+        android:indeterminateTintMode="src_atop"
+        android:indeterminateTint="@color/colorPrimary"
+        android:visibility="gone"/>
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fitsSystemWindows="true"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/bg_chooser" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin_15"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_15"
+                        android:text="Today,\nI am going to TEACH"
+                        android:textColor="@color/color_yellow"
+                        android:textSize="@dimen/textsize_20"
+                        android:textStyle="bold" />
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <RelativeLayout
+                            android:id="@+id/relative_searchBtn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="54dp"
+                            android:layout_margin="@dimen/margin_10"
+                            android:background="@android:drawable/screen_background_light_transparent"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/imgLeftMenu"
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="@dimen/margin_10"
+                                android:adjustViewBounds="true"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/outline"
+                                app:tint="@color/colorWhite" />
+
+                            <EditText
+                                android:id="@+id/search_home"
+                                android:layout_width="250dp"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="@dimen/margin_10"
+                                android:layout_toRightOf="@+id/imgLeftMenu"
+                                android:background="@android:color/transparent"
+                                android:hint="@string/what_i_love"
+                                android:inputType="text"
+                                android:textColor="@color/colorGray"
+                                android:textColorHint="@color/colorWhite"
+                                android:textStyle="bold" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/margin_3"
+                                android:layout_below="@id/search_home"
+                                android:layout_marginTop="8dp"
+                                android:background="@color/color_yellow" />
+
+                        </RelativeLayout>
+
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:gravity="end"
+                        android:text="Type to get Started Searching Over\n300 Subject"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="@dimen/textsize_16"
+                        android:textStyle="bold" />
+
+
+                </LinearLayout>
+
+
+            </RelativeLayout>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/margin_15"
+                android:gravity="center"
+                android:text="Hundreds of subjects &amp; endless\npossibilities! Have a look at our\ncategories"
+                android:textAlignment="center"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/textsize_18"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_get_tutor_category"
+                android:visibility="visible"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="vertical"
+                />
+
+
+            <LinearLayout
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_30"
+                android:gravity="center_horizontal"
+                android:weightSum="2"
+                android:orientation="horizontal">
+
+
+                <RelativeLayout
+                    android:id="@+id/card_category1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginRight="@dimen/padding_5">
+
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/margin_150"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/aa" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:layout_margin="@dimen/margin_15"
+                        android:text="Tuition"
+                        android:visibility="invisible"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="@dimen/textsize_15"
+                        android:textStyle="bold" />
+
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="@dimen/padding_5">
+
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/margin_150"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/bb" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:layout_marginLeft="@dimen/margin_25"
+                        android:layout_marginBottom="@dimen/margin_15"
+                        android:text="Exam Coaching"
+                        android:visibility="invisible"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="@dimen/textsize_15"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/margin_30"
+                android:layout_marginTop="@dimen/margin_5"
+                android:layout_marginRight="@dimen/margin_30"
+                android:weightSum="2"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginRight="@dimen/padding_5">
+
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/margin_150"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/cc" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:layout_marginLeft="@dimen/margin_25"
+                        android:layout_marginBottom="@dimen/margin_15"
+                        android:text="Guidance"
+                        android:visibility="invisible"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="@dimen/textsize_15"
+                        android:textStyle="bold" />
+
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="@dimen/padding_5">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/margin_150"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/dd" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:layout_margin="@dimen/margin_15"
+                        android:text="Languages"
+                        android:visibility="invisible"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="@dimen/textsize_15"
+                        android:textStyle="bold" />
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</RelativeLayout>
+
+
+
+

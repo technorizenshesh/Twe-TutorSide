@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/margin_20"
+    android:background="@color/colorWhite">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/margin_20"
+            android:textColor="@color/color_txtBlue"
+            android:textStyle="bold"
+            android:layout_marginTop="@dimen/margin_20"
+            android:gravity="center"
+            android:text="How It Works"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/textsize13"
+            android:textColor="@color/colorGray"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:text="Here's why 2 million people use TWE"/>
+
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/margin_200"
+            android:src="@drawable/slide_03"
+            android:layout_marginTop="@dimen/margin_20"
+            android:id="@+id/imageView" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/textsize_20"
+            android:textColor="@color/color_txtBlue"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:text="Keep students learning"/>
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/textsize13"
+            android:textColor="@color/colorGray"
+            android:textStyle="bold"
+            android:layout_marginTop="@dimen/margin_5"
+            android:gravity="center"
+            android:text="Help your students learn new skills\neach month and earn as much as\nyou can"/>
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

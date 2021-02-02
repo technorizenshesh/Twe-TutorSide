@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.YourPackLessonActivity">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="@dimen/margin_300"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginTop="@dimen/margin_5"
+                android:text="Lesson Package"
+                android:layout_gravity="center"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/textsize_20"
+                android:textStyle="bold" />
+
+
+            <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_50">
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:layout_width="@dimen/margin_120"
+                android:layout_height="@dimen/margin_120"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:src="@drawable/home_banner3" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/margin_15"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingTop="@dimen/margin_10">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/margin_30"
+                android:gravity="center"
+                android:text="Olivia Parker"
+                android:textColor="@color/color_txtBlue"
+                android:textSize="@dimen/textsize_20"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/padding_5"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <RatingBar
+                    android:id="@+id/MyRating"
+                    style="?android:attr/ratingBarStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:isIndicator="true"
+                    android:numStars="5"
+                    android:progressTint="@color/color_yellow"
+                    android:rating="5"
+                    android:stepSize="0.1" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_20"
+                    android:gravity="center"
+                    android:text="5.0(44)"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorBlack" />
+            </LinearLayout>
+
+
+
+
+
+        </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="Student Confiremed"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/textsize_20"
+                    android:textStyle="bold" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="Sit back and relax. Your student\nis arriving in 15 minutes."
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/textsize_15" />
+
+
+
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="@dimen/margin_300"
+                android:layout_height="@dimen/margin_50"
+                android:layout_marginLeft="@dimen/margin_20"
+                android:layout_marginRight="@dimen/margin_20"
+                android:layout_marginTop="@dimen/margin_20"
+                android:onClick="tutorMapInit"
+                android:layout_gravity="center"
+                android:background="@drawable/bg_redbutton"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="@dimen/margin_300"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_5"
+                    android:onClick="tutorMapInit"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_login"
+                        android:layout_width="@dimen/margin_300"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:layout_marginTop="@dimen/margin_5"
+                        android:text="Track Tutor On Map"
+                        android:onClick="tutorMapInit"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="@dimen/margin_300"
+                android:layout_height="@dimen/margin_50"
+                android:layout_marginLeft="@dimen/margin_20"
+                android:layout_marginRight="@dimen/margin_20"
+                android:layout_marginTop="@dimen/margin_20"
+                android:layout_gravity="center"
+                android:background="@drawable/outline_blue"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="@dimen/margin_300"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_5"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="@dimen/margin_300"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:layout_marginTop="@dimen/margin_5"
+                        android:text="View Tutor Information"
+                        android:textColor="@color/color_txtBlue"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+
+
+    </androidx.core.widget.NestedScrollView>
+</RelativeLayout>

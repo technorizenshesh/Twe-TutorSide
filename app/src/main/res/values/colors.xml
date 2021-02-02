@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#0070c0</color>
+    <color name="colorPrimaryDark">#05346d</color>
+    <color name="colorAccent">#03DAC5</color>
+
+
+
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorGreen">#257712</color>
+    <color name="colorGray">#727272</color>
+    <color name="colorLightGray">#e3e3e3</color>
+    <color name="colorBackground">#f3fcff</color>
+
+
+    <!-- dots inactive colors -->
+    <color name="dot_dark_screen1">#39d1ba</color>
+    <color name="dot_dark_screen2">#14a895</color>
+
+    <!-- dots active colors -->
+    <color name="dot_light_screen1">#8de7f9</color>
+    <color name="dot_light_screen2">#8cf9eb</color>
+    <color name="colorDot">#0070c0</color>
+    <color name="colorDotOutline">#034e84</color>
+    <color name="colorBackgroundBg">#fecd0e</color>
+
+
+    <array name="array_dot_active">
+        <item>@color/dot_light_screen1</item>
+        <item>@color/dot_light_screen2</item>
+    </array>
+
+    <array name="array_dot_inactive">
+        <item>@color/dot_dark_screen1</item>
+        <item>@color/dot_dark_screen2</item>
+    </array>
+
+
+
+
+    <color name="darkbg_black">#202020</color>
+    <color name="red">#ff5d5d</color>
+    <color name="fb_blue">#047bff</color>
+    <color name="google_colour">#ff5a40</color>
+    <color name="lightpink">#fdf1f1</color>
+
+    <color name="txt_Darkblue">#4c4e67</color>
+    <color name="gray_new">#f8f9fe</color>
+    <color name="color_yellow">#fecd0e</color>
+    <color name="coloreditBg">#eff2f5</color>
+    <color name="edit_darkBlue">#05346d</color>
+    <color name="color_txtBlue">#05346d</color>
+    <color name="chat_boxbg">#f3f2f2</color>
+    <color name="my_txtblue">#5e83b4</color>
+    <color name="color_txtPurple">#4a00e0</color>
+    <color name="color_bg">#f8f9fe</color>
+    <color name="light_black">#ACACAC</color>
+    <color name="account_txtcolour">#3e3f68</color>
+    <color name="account_txtgreen">#00bf47</color>
+</resources>

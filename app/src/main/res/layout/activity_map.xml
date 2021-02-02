@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="@drawable/map_bg"
+    tools:context=".activity.MapActivity">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_15"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="21dp"
+            android:layout_height="21dp"
+            android:adjustViewBounds="true"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/margin_10"
+            android:scaleType="fitCenter"
+            android:src="@drawable/back" />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Map"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:paddingLeft="@dimen/margin_15"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/textsize_25"
+            android:textStyle="bold" />
+
+
+
+
+
+        <ImageView
+            android:layout_width="@dimen/margin_40"
+            android:layout_height="@dimen/margin_40"
+            android:adjustViewBounds="true"
+            android:layout_gravity="center"
+            android:paddingRight="@dimen/margin_15"
+            android:scaleType="fitCenter"
+            android:visibility="invisible"
+            android:src="@drawable/icon_delete" />
+
+
+    </LinearLayout>
+
+    </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+
+
+
+</RelativeLayout>

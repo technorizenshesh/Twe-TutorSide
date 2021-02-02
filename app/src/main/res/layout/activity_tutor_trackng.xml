@@ -1,0 +1,488 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fitsSystemWindows="true"
+    tools:context=".activity.TutorTrackngActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+
+
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_15"
+                android:orientation="horizontal">
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/back_black">
+
+                </ImageView>
+
+
+            </LinearLayout>
+
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="20dp"
+                android:clickable="true"
+                app:cardElevation="@dimen/margin_5"
+                app:cardMaxElevation="@dimen/margin_5"
+                app:cardUseCompatPadding="true"
+                app:cardBackgroundColor="@color/colorWhite"
+                app:cardPreventCornerOverlap="true">
+
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/crop_map"/>
+
+
+
+
+
+            </androidx.cardview.widget.CardView>
+
+
+        </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:orientation="vertical">
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:gravity="bottom">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="460dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/margin_30"
+                        android:background="@drawable/round_shapeyellowbg"
+                        android:backgroundTint="@color/edit_darkBlue"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="@dimen/margin_20"
+                            android:layout_marginTop="@dimen/margin_15"
+                            android:layout_marginRight="@dimen/margin_20"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/margin_10"
+                                android:layout_weight="1"
+                                android:gravity="start"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Date"
+                                    android:textColor="@color/colorWhite"
+                                    android:textSize="@dimen/textsize_18"
+                                    android:textStyle="bold" />
+
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="24 SEP 2020"
+                                    android:textColor="@color/colorWhite"
+                                    android:textSize="@dimen/textsize_15"
+                                    android:textStyle="bold" />
+
+
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="@dimen/margin_10"
+                                android:layout_weight="1"
+                                android:gravity="end"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Class Time"
+                                    android:textColor="@color/colorWhite"
+                                    android:textSize="@dimen/textsize_18"
+                                    android:textStyle="bold" />
+
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="3:00Pm"
+                                    android:textColor="@color/colorWhite"
+                                    android:textSize="@dimen/textsize_18"
+                                    android:textStyle="bold" />
+
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="@dimen/margin_20"
+                            android:layout_marginTop="@dimen/margin_15"
+                            android:layout_marginRight="@dimen/margin_20"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/margin_10"
+                                android:layout_weight="1"
+                                android:gravity="start"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="My Location"
+                                    android:textColor="@color/colorWhite"
+                                    android:textSize="@dimen/textsize_18"
+                                    android:textStyle="bold" />
+
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Indore,MP"
+                                    android:textColor="@color/colorWhite"
+                                    android:textSize="@dimen/textsize_15"
+                                    android:textStyle="bold" />
+
+
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="@dimen/margin_10"
+                                android:layout_weight="1"
+                                android:gravity="end"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="teacher Location"
+                                    android:textColor="@color/colorWhite"
+                                    android:textSize="@dimen/textsize_18"
+                                    android:textStyle="bold" />
+
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Indore,MP"
+                                    android:textColor="@color/colorWhite"
+                                    android:textSize="@dimen/textsize_18"
+                                    android:textStyle="bold" />
+
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="@dimen/margin_20"
+                            android:layout_marginTop="@dimen/margin_15"
+                            android:layout_marginRight="@dimen/margin_20"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/margin_10"
+                                android:layout_weight="1"
+                                android:gravity="start"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Tutor Name"
+                                    android:textColor="@color/colorWhite"
+                                    android:textSize="@dimen/textsize_18"
+                                    android:textStyle="bold" />
+
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Olivia Parker"
+                                    android:textColor="@color/colorWhite"
+                                    android:textSize="@dimen/textsize_15"
+                                    android:textStyle="bold" />
+
+
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="@dimen/margin_10"
+                                android:layout_weight="1"
+                                android:gravity="end"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Lesson Location"
+                                    android:textColor="@color/colorWhite"
+                                    android:textSize="@dimen/textsize_18"
+                                    android:textStyle="bold" />
+
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Teacher's Home"
+                                    android:textColor="@color/colorWhite"
+                                    android:textSize="@dimen/textsize_18"
+                                    android:textStyle="bold" />
+
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="@dimen/margin_20"
+                            android:layout_marginTop="@dimen/margin_15"
+                            android:layout_marginRight="@dimen/margin_20"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/margin_10"
+                                android:layout_weight="1"
+                                android:gravity="start"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Duration"
+                                    android:textColor="@color/colorWhite"
+                                    android:textSize="@dimen/textsize_18"
+                                    android:textStyle="bold" />
+
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="60 Min"
+                                    android:textColor="@color/colorWhite"
+                                    android:textSize="@dimen/textsize_15"
+                                    android:textStyle="bold" />
+
+
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="@dimen/margin_10"
+                                android:layout_weight="1"
+                                android:gravity="end"
+                                android:orientation="vertical"
+                                android:visibility="invisible">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Class Time"
+                                    android:textColor="@color/colorWhite"
+                                    android:textSize="@dimen/textsize_18"
+                                    android:textStyle="bold" />
+
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="3:00Pm"
+                                    android:textColor="@color/colorWhite"
+                                    android:textSize="@dimen/textsize_18"
+                                    android:textStyle="bold" />
+
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/margin_160"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="@dimen/margin_350"
+                        android:background="@drawable/white_cardbg"
+                        android:backgroundTint="@color/colorWhite"
+                        android:orientation="horizontal">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/margin_100"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical">
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Estmate time\nto reach"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/textsize_18"
+                                android:textStyle="bold" />
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="40 min"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/textsize_25"
+                                android:textStyle="bold" />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_gravity="center_horizontal"
+                            android:onClick="startInit"
+                            android:orientation="vertical">
+
+
+                            <TextView
+                                android:layout_width="@dimen/margin_150"
+                                android:layout_height="@dimen/margin_50"
+                                android:background="@drawable/outline_yellowbg"
+                                android:gravity="center"
+                                android:onClick="startInit"
+                                android:text="Start"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/textsize_25"
+                                android:textStyle="bold" />
+
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+    </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+
+
+    </LinearLayout>
+
+</RelativeLayout>

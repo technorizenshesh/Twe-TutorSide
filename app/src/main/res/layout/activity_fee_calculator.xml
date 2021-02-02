@@ -1,0 +1,1556 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_bg"
+    tools:context=".activity.FeeCalculatorActivity">
+
+
+
+    <ProgressBar
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_centerInParent="true"
+        android:id="@+id/progressBar"
+        android:background="@drawable/progresh_background"
+        android:elevation="6dp"
+        android:padding="5dp"
+        android:indeterminate="true"
+        android:indeterminateTintMode="src_atop"
+        android:indeterminateTint="@color/colorPrimary"
+        android:visibility="gone"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_15"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/iv_back"
+                android:layout_width="21dp"
+                android:layout_height="21dp"
+                android:adjustViewBounds="true"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/margin_10"
+                android:scaleType="fitCenter"
+                android:src="@drawable/back" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Fee Calculator"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:paddingLeft="@dimen/margin_15"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/textsize_18"
+                android:textStyle="bold" />
+
+
+
+            <ImageView
+                android:layout_width="@dimen/margin_40"
+                android:layout_height="@dimen/margin_40"
+                android:adjustViewBounds="true"
+                android:layout_gravity="center"
+                android:paddingRight="@dimen/margin_15"
+                android:scaleType="fitCenter"
+                android:visibility="invisible"
+                android:src="@drawable/icon_delete" />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="15dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <TextView
+                android:id="@+id/txt1_homeTab"
+                android:layout_width="110dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:background="@drawable/color_pink"
+                android:clickable="true"
+                android:contextClickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:text="Single Student"
+                android:textAlignment="center"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/textsize14"
+                android:textStyle="bold"
+                tools:ignore="RtlCompat" />
+
+
+            <TextView
+                android:id="@+id/txt3_homeTab"
+                android:layout_width="110dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/color_gray"
+                android:clickable="true"
+                android:contextClickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:text="Group"
+                android:textAlignment="center"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/textsize14"
+                tools:ignore="RtlCompat" />
+
+
+        </LinearLayout>
+
+
+        <androidx.core.widget.NestedScrollView
+            android:visibility="visible"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="vertical">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:id="@+id/LL_indivisual"
+                    android:visibility="visible"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_50"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+
+                        <TextView
+                            android:visibility="gone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:layout_marginLeft="@dimen/margin_20"
+                            android:layout_marginTop="@dimen/_14dp"
+                            android:text="Subject Name"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="@dimen/textsize_16"
+                            android:textStyle="bold" />
+
+
+                        <androidx.cardview.widget.CardView
+                            android:visibility="gone"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/margin_20"
+                            android:layout_marginRight="@dimen/margin_20"
+                            app:cardCornerRadius="@dimen/margin_10"
+                            app:cardElevation="@dimen/margin_5"
+                            app:cardMaxElevation="5dp"
+                            app:cardPreventCornerOverlap="true"
+                            app:cardUseCompatPadding="true">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:padding="@dimen/textsize_15">
+
+
+                                <ImageView
+                                    android:layout_width="@dimen/margin_25"
+                                    android:layout_height="@dimen/margin_25"
+                                    android:layout_gravity="center"
+                                    android:visibility="gone"
+                                    android:src="@drawable/male" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginRight="@dimen/margin_15"
+                                    android:layout_weight="1"
+                                    android:text="Subject"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="@dimen/textsize13" />
+
+
+                                <ImageView
+                                    android:layout_width="@dimen/margin_15"
+                                    android:layout_height="@dimen/textsize_15"
+                                    android:layout_gravity="center"
+                                    android:visibility="invisible"
+                                    android:src="@drawable/drop_down" />
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:layout_marginLeft="@dimen/margin_20"
+                            android:layout_marginTop="@dimen/_14dp"
+                            android:text="What is the tuition Fee per hour?"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="@dimen/textsize_16"
+                            android:textStyle="bold" />
+
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/margin_20"
+                            android:layout_marginRight="@dimen/margin_20"
+                            app:cardCornerRadius="@dimen/margin_10"
+                            app:cardElevation="@dimen/margin_5"
+                            app:cardMaxElevation="5dp"
+                            app:cardPreventCornerOverlap="true"
+                            app:cardUseCompatPadding="true">
+
+
+                            <EditText
+                                android:id="@+id/edt_perHr_indivisual"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="@dimen/margin_15"
+                                android:layout_marginRight="@dimen/margin_15"
+                                android:layout_weight="1"
+                                android:background="@color/colorWhite"
+                                android:hint="\u20B91000"
+                                android:textColor="@color/colorBlack"
+                                android:textColorHint="@color/colorGray"
+                                android:textSize="@dimen/textsize13"
+                                android:textStyle="bold" />
+
+
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:layout_marginLeft="@dimen/margin_20"
+                            android:layout_marginTop="@dimen/_14dp"
+                            android:text="What is the total duration in hours\nrequired to complete the Full course?"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="@dimen/textsize_16"
+                            android:textStyle="bold" />
+
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/margin_20"
+                            android:layout_marginRight="@dimen/margin_20"
+                            app:cardCornerRadius="@dimen/margin_10"
+                            app:cardElevation="@dimen/margin_5"
+                            app:cardMaxElevation="5dp"
+                            app:cardPreventCornerOverlap="true"
+                            app:cardUseCompatPadding="true">
+
+
+                            <EditText
+                                android:id="@+id/edt_Complte_course_hor_indivisual"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="@dimen/margin_15"
+                                android:layout_marginRight="@dimen/margin_15"
+                                android:layout_weight="1"
+                                android:background="@color/colorWhite"
+                                android:hint="\u20B91000"
+                                android:textColor="@color/colorBlack"
+                                android:textColorHint="@color/colorGray"
+                                android:textSize="@dimen/textsize13"
+                                android:textStyle="bold" />
+
+
+                        </androidx.cardview.widget.CardView>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/lesson7Id_indivisual"
+                        android:layout_width="@dimen/margin_280"
+                        android:layout_height="@dimen/_45dp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/margin_20"
+                        android:layout_marginTop="@dimen/margin_20"
+                        android:layout_marginRight="@dimen/margin_20"
+                        android:background="@drawable/edit_bgbutton"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        >
+
+
+                        <TextView
+                            android:id="@+id/lesson_add_indivisual"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Add Price"
+                            android:textAllCaps="true"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin_20"
+                        android:layout_marginRight="@dimen/margin_20"
+                        android:layout_marginTop="@dimen/margin_15"
+                        android:layout_gravity="center"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
+
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:background="@color/colorGray"/>
+
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:weightSum="5"
+                            android:layout_marginTop="@dimen/margin_15"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:visibility="invisible"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginRight="@dimen/margin_10"
+                                android:text="Twe Service\nCharges"
+                                android:layout_marginLeft="@dimen/margin_15"
+                                android:layout_weight="1"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/textsize14"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="@dimen/margin_10"
+                                android:text="Twe Service\nCharges"
+                                android:layout_marginLeft="@dimen/margin_10"
+                                android:layout_weight="1"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/margin_12"
+                                android:textStyle="bold" />
+
+
+
+
+                            <TextView
+                                android:gravity="center"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="Discount\n/to student"
+                                android:layout_weight="1"
+                                android:layout_marginRight="@dimen/margin_15"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/margin_12"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:gravity="center"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="Teachers\nearning"
+                                android:layout_weight="1"
+                                android:layout_marginRight="@dimen/margin_15"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/margin_12"
+                                android:textStyle="bold" />
+
+
+
+                            <TextView
+                                android:gravity="center"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="Student Price"
+                                android:layout_marginRight="@dimen/margin_15"
+                                android:layout_weight="1"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/margin_12"
+                                android:textStyle="bold" />
+
+
+
+
+
+
+                        </LinearLayout>
+
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:background="@color/colorGray"/>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="@dimen/margin_15"
+                            android:weightSum="5"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start"
+                                android:layout_marginTop="@dimen/textsize_12"
+                                android:text="Hourly"
+                                android:layout_weight="1"
+                                android:layout_marginLeft="@dimen/margin_10"
+                                android:layout_marginRight="@dimen/margin_15"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/textsize_12"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/txt_hr_services_charge"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start"
+                                android:layout_marginLeft="@dimen/margin_15"
+                                android:layout_marginTop="@dimen/_14dp"
+                                android:layout_marginRight="@dimen/margin_15"
+                                android:layout_weight="1"
+                                android:text="00"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/textsize14"
+                                android:textStyle="bold" />
+
+
+
+
+                            <TextView
+                                android:id="@+id/txt_hr_dicount_student"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start"
+                                android:layout_marginTop="@dimen/_14dp"
+                                android:text="00"
+                                android:layout_weight="1"
+                                android:layout_marginRight="@dimen/margin_15"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/textsize14"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/txt_hr_teachse_earning"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start"
+                                android:layout_marginTop="@dimen/_14dp"
+                                android:text="0"
+                                android:layout_weight="1"
+                                android:layout_marginRight="@dimen/margin_15"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/textsize14"
+                                android:textStyle="bold" />
+
+
+
+                            <TextView
+                                android:id="@+id/txt_hr_student_prices"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start"
+                                android:layout_marginTop="@dimen/_14dp"
+                                android:text="00"
+                                android:layout_marginRight="@dimen/margin_15"
+                                android:layout_weight="1"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/textsize14"
+                                android:textStyle="bold" />
+
+
+
+
+
+
+                        </LinearLayout>
+
+
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:background="@color/colorGray"/>
+
+
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="@dimen/margin_15"
+                            android:weightSum="5"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start"
+                                android:layout_marginTop="@dimen/_14dp"
+                                android:text="Weekly"
+                                android:layout_marginLeft="@dimen/margin_10"
+                                android:layout_marginRight="@dimen/margin_15"
+                                android:layout_weight="1"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/textsize_12"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/txt_weekly_services_charge"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start"
+                                android:layout_marginTop="@dimen/_14dp"
+                                android:text="00"
+                                android:layout_marginLeft="@dimen/margin_15"
+                                android:layout_marginRight="@dimen/margin_15"
+                                android:layout_weight="1"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/textsize14"
+                                android:textStyle="bold" />
+
+
+
+
+                            <TextView
+                                android:id="@+id/txt_weekly_dicount_student"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start"
+                                android:layout_marginTop="@dimen/_14dp"
+                                android:text="00"
+                                android:layout_weight="1"
+                                android:layout_marginRight="@dimen/margin_15"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/textsize14"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/txt_weekly_teacharse_earingn"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start"
+                                android:layout_marginTop="@dimen/_14dp"
+                                android:text="0"
+                                android:layout_weight="1"
+                                android:layout_marginRight="@dimen/margin_15"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/textsize14"
+                                android:textStyle="bold" />
+
+
+
+                            <TextView
+                                android:id="@+id/txt_weekly_student_price"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start"
+                                android:layout_marginTop="@dimen/_14dp"
+                                android:text="00"
+                                android:layout_weight="1"
+                                android:layout_marginRight="@dimen/margin_15"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/textsize14"
+                                android:textStyle="bold" />
+
+
+
+
+
+
+                        </LinearLayout>
+
+
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:background="@color/colorGray"/>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="@dimen/margin_15"
+                            android:weightSum="5"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start"
+                                android:layout_marginTop="@dimen/_14dp"
+                                android:text="Monthly"
+                                android:layout_weight="1"
+                                android:layout_marginLeft="@dimen/margin_10"
+                                android:layout_marginRight="@dimen/margin_15"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/textsize_12"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/txt_monthly_services_charge"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start"
+                                android:layout_marginLeft="@dimen/margin_15"
+                                android:layout_marginTop="@dimen/_14dp"
+                                android:layout_marginRight="@dimen/margin_15"
+                                android:layout_weight="1"
+                                android:text="00"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/textsize14"
+                                android:textStyle="bold" />
+
+
+
+
+                            <TextView
+                                android:id="@+id/txt_monthly_discount_student"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start"
+                                android:layout_marginTop="@dimen/_14dp"
+                                android:text="00"
+                                android:layout_weight="1"
+                                android:layout_marginRight="@dimen/margin_15"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/textsize14"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/txt_monthly_teacharce_earning"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start"
+                                android:layout_marginTop="@dimen/_14dp"
+                                android:text="00"
+                                android:layout_weight="1"
+                                android:layout_marginRight="@dimen/margin_15"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/textsize14"
+                                android:textStyle="bold" />
+
+
+
+                            <TextView
+                                android:id="@+id/txt_monthly_student_price"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start"
+                                android:layout_marginTop="@dimen/_14dp"
+                                android:text="00"
+                                android:layout_weight="1"
+                                android:layout_marginRight="@dimen/margin_15"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/textsize14"
+                                android:textStyle="bold" />
+
+
+
+
+
+
+                        </LinearLayout>
+
+
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:background="@color/colorGray"/>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_15"
+                            android:layout_gravity="center_horizontal"
+                            android:weightSum="5"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start"
+                                android:layout_marginLeft="@dimen/margin_10"
+                                android:layout_marginTop="@dimen/_14dp"
+                                android:layout_marginRight="@dimen/margin_10"
+                                android:layout_weight="1"
+                                android:text="Full Course"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/textsize_12"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/txt_full_services_charge"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start"
+                                android:layout_marginTop="@dimen/_14dp"
+                                android:text="00"
+                                android:layout_weight="1"
+                                android:layout_marginLeft="@dimen/margin_10"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/textsize14"
+                                android:textStyle="bold" />
+
+
+
+
+                            <TextView
+                                android:id="@+id/txt_full_discount_student"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start"
+                                android:layout_marginTop="@dimen/_14dp"
+                                android:text="00"
+                                android:layout_weight="1"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/textsize14"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/txt_full_teacharce_earning"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start"
+                                android:layout_marginTop="@dimen/_14dp"
+                                android:text="00"
+                                android:layout_weight="1"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/textsize14"
+                                android:textStyle="bold" />
+
+
+
+                            <TextView
+                                android:id="@+id/txt_full_student_price"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start"
+                                android:layout_marginTop="@dimen/_14dp"
+                                android:text="00"
+                                android:layout_weight="1"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/textsize14"
+                                android:textStyle="bold" />
+
+
+
+
+
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:layout_marginTop="@dimen/margin_15"
+                            android:background="@color/colorGray"/>
+
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/LL_Group"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_50"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+
+                        <TextView
+                            android:visibility="gone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:layout_marginLeft="@dimen/margin_20"
+                            android:layout_marginTop="@dimen/_14dp"
+                            android:text="Subject Name"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="@dimen/textsize_16"
+                            android:textStyle="bold" />
+
+
+                        <androidx.cardview.widget.CardView
+                            android:visibility="gone"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/margin_20"
+                            android:layout_marginRight="@dimen/margin_20"
+                            app:cardCornerRadius="@dimen/margin_10"
+                            app:cardElevation="@dimen/margin_5"
+                            app:cardMaxElevation="5dp"
+                            app:cardPreventCornerOverlap="true"
+                            app:cardUseCompatPadding="true">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:padding="@dimen/textsize_15">
+
+
+                                <ImageView
+                                    android:layout_width="@dimen/margin_25"
+                                    android:layout_height="@dimen/margin_25"
+                                    android:layout_gravity="center"
+                                    android:visibility="gone"
+                                    android:src="@drawable/male" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginRight="@dimen/margin_15"
+                                    android:layout_weight="1"
+                                    android:text="Subject"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="@dimen/textsize13" />
+
+
+                                <ImageView
+                                    android:layout_width="@dimen/margin_15"
+                                    android:layout_height="@dimen/textsize_15"
+                                    android:layout_gravity="center"
+                                    android:visibility="invisible"
+                                    android:src="@drawable/drop_down" />
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:layout_marginLeft="@dimen/margin_20"
+                            android:layout_marginTop="@dimen/_14dp"
+                            android:text="What is the tuition Fee per hour?"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="@dimen/textsize_16"
+                            android:textStyle="bold" />
+
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/margin_20"
+                            android:layout_marginRight="@dimen/margin_20"
+                            app:cardCornerRadius="@dimen/margin_10"
+                            app:cardElevation="@dimen/margin_5"
+                            app:cardMaxElevation="5dp"
+                            app:cardPreventCornerOverlap="true"
+                            app:cardUseCompatPadding="true">
+
+
+                            <EditText
+                                android:id="@+id/edt_perHr_grp"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="@dimen/margin_15"
+                                android:layout_marginRight="@dimen/margin_15"
+                                android:layout_weight="1"
+                                android:background="@color/colorWhite"
+                                android:hint="\u20B91000"
+                                android:textColor="@color/colorBlack"
+                                android:textColorHint="@color/colorGray"
+                                android:textSize="@dimen/textsize13"
+                                android:textStyle="bold" />
+
+
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:layout_marginLeft="@dimen/margin_20"
+                            android:layout_marginTop="@dimen/_14dp"
+                            android:text="What is the total duration in hours\nrequired to complete the Full course?"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="@dimen/textsize_16"
+                            android:textStyle="bold" />
+
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/margin_20"
+                            android:layout_marginRight="@dimen/margin_20"
+                            app:cardCornerRadius="@dimen/margin_10"
+                            app:cardElevation="@dimen/margin_5"
+                            app:cardMaxElevation="5dp"
+                            app:cardPreventCornerOverlap="true"
+                            app:cardUseCompatPadding="true">
+
+
+                            <EditText
+                                android:id="@+id/edt_Complte_course_hor_grp"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="@dimen/margin_15"
+                                android:layout_marginRight="@dimen/margin_15"
+                                android:layout_weight="1"
+                                android:background="@color/colorWhite"
+                                android:hint="\u20B91000"
+                                android:textColor="@color/colorBlack"
+                                android:textColorHint="@color/colorGray"
+                                android:textSize="@dimen/textsize13"
+                                android:textStyle="bold" />
+
+
+                        </androidx.cardview.widget.CardView>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/lesson7Id_grp"
+                        android:layout_width="@dimen/margin_280"
+                        android:layout_height="@dimen/_45dp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/margin_20"
+                        android:layout_marginTop="@dimen/margin_20"
+                        android:layout_marginRight="@dimen/margin_20"
+                        android:background="@drawable/edit_bgbutton"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        >
+
+
+                        <TextView
+                            android:id="@+id/lesson_add_grp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Add Price"
+                            android:textAllCaps="true"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin_20"
+                        android:layout_marginRight="@dimen/margin_20"
+                        android:layout_marginTop="@dimen/margin_15"
+                        android:layout_gravity="center"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
+
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:background="@color/colorGray"/>
+
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:weightSum="5"
+                            android:layout_marginTop="@dimen/margin_15"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:visibility="invisible"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginRight="@dimen/margin_10"
+                                android:text="Twe Service\nCharges"
+                                android:layout_marginLeft="@dimen/margin_15"
+                                android:layout_weight="1"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/textsize14"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="@dimen/margin_10"
+                                android:text="Twe Service\nCharges"
+                                android:layout_marginLeft="@dimen/margin_10"
+                                android:layout_weight="1"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/margin_12"
+                                android:textStyle="bold" />
+
+
+
+
+                            <TextView
+                                android:gravity="center"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="Discount\n/to student"
+                                android:layout_weight="1"
+                                android:layout_marginRight="@dimen/margin_15"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/margin_12"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:gravity="center"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="Teachers\nearning"
+                                android:layout_weight="1"
+                                android:layout_marginRight="@dimen/margin_15"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/margin_12"
+                                android:textStyle="bold" />
+
+
+
+                            <TextView
+                                android:gravity="center"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="Student Price"
+                                android:layout_marginRight="@dimen/margin_15"
+                                android:layout_weight="1"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/margin_12"
+                                android:textStyle="bold" />
+
+
+
+
+
+
+                        </LinearLayout>
+
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:background="@color/colorGray"/>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="@dimen/margin_15"
+                            android:weightSum="5"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start"
+                                android:layout_marginTop="@dimen/textsize_12"
+                                android:text="Hourly"
+                                android:layout_weight="1"
+                                android:layout_marginLeft="@dimen/margin_10"
+                                android:layout_marginRight="@dimen/margin_15"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/textsize_12"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/txt_hr_services_charge_grp"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start"
+                                android:layout_marginLeft="@dimen/margin_15"
+                                android:layout_marginTop="@dimen/_14dp"
+                                android:layout_marginRight="@dimen/margin_15"
+                                android:layout_weight="1"
+                                android:text="00"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/textsize14"
+                                android:textStyle="bold" />
+
+
+                            <TextView
+                                android:id="@+id/txt_hr_dicount_student_grp"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start"
+                                android:layout_marginTop="@dimen/_14dp"
+                                android:text="00"
+                                android:layout_weight="1"
+                                android:layout_marginRight="@dimen/margin_15"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/textsize14"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/txt_hr_teachse_earning_grp"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start"
+                                android:layout_marginTop="@dimen/_14dp"
+                                android:text="0"
+                                android:layout_weight="1"
+                                android:layout_marginRight="@dimen/margin_15"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/textsize14"
+                                android:textStyle="bold" />
+
+
+
+                            <TextView
+                                android:id="@+id/txt_hr_student_prices_grp"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start"
+                                android:layout_marginTop="@dimen/_14dp"
+                                android:text="00"
+                                android:layout_marginRight="@dimen/margin_15"
+                                android:layout_weight="1"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/textsize14"
+                                android:textStyle="bold" />
+
+
+
+
+
+
+                        </LinearLayout>
+
+
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:background="@color/colorGray"/>
+
+
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="@dimen/margin_15"
+                            android:weightSum="5"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start"
+                                android:layout_marginTop="@dimen/_14dp"
+                                android:text="Weekly"
+                                android:layout_marginLeft="@dimen/margin_10"
+                                android:layout_marginRight="@dimen/margin_15"
+                                android:layout_weight="1"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/textsize_12"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/txt_weekly_services_charge_grp"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start"
+                                android:layout_marginTop="@dimen/_14dp"
+                                android:text="00"
+                                android:layout_marginLeft="@dimen/margin_15"
+                                android:layout_marginRight="@dimen/margin_15"
+                                android:layout_weight="1"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/textsize14"
+                                android:textStyle="bold" />
+
+
+
+
+                            <TextView
+                                android:id="@+id/txt_weekly_dicount_student_grp"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start"
+                                android:layout_marginTop="@dimen/_14dp"
+                                android:text="00"
+                                android:layout_weight="1"
+                                android:layout_marginRight="@dimen/margin_15"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/textsize14"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/txt_weekly_teacharse_earingn_grp"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start"
+                                android:layout_marginTop="@dimen/_14dp"
+                                android:text="0"
+                                android:layout_weight="1"
+                                android:layout_marginRight="@dimen/margin_15"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/textsize14"
+                                android:textStyle="bold" />
+
+
+
+                            <TextView
+                                android:id="@+id/txt_weekly_student_price_grp"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start"
+                                android:layout_marginTop="@dimen/_14dp"
+                                android:text="00"
+                                android:layout_weight="1"
+                                android:layout_marginRight="@dimen/margin_15"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/textsize14"
+                                android:textStyle="bold" />
+
+
+
+
+
+
+                        </LinearLayout>
+
+
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:background="@color/colorGray"/>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="@dimen/margin_15"
+                            android:weightSum="5"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start"
+                                android:layout_marginTop="@dimen/_14dp"
+                                android:text="Monthly"
+                                android:layout_weight="1"
+                                android:layout_marginLeft="@dimen/margin_10"
+                                android:layout_marginRight="@dimen/margin_15"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/textsize_12"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/txt_monthly_services_charge_grp"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start"
+                                android:layout_marginLeft="@dimen/margin_15"
+                                android:layout_marginTop="@dimen/_14dp"
+                                android:layout_marginRight="@dimen/margin_15"
+                                android:layout_weight="1"
+                                android:text="00"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/textsize14"
+                                android:textStyle="bold" />
+
+
+
+
+                            <TextView
+                                android:id="@+id/txt_monthly_discount_student_grp"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start"
+                                android:layout_marginTop="@dimen/_14dp"
+                                android:text="00"
+                                android:layout_weight="1"
+                                android:layout_marginRight="@dimen/margin_15"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/textsize14"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/txt_monthly_teacharce_earning_grp"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start"
+                                android:layout_marginTop="@dimen/_14dp"
+                                android:text="00"
+                                android:layout_weight="1"
+                                android:layout_marginRight="@dimen/margin_15"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/textsize14"
+                                android:textStyle="bold" />
+
+
+
+                            <TextView
+                                android:id="@+id/txt_monthly_student_price_grp"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start"
+                                android:layout_marginTop="@dimen/_14dp"
+                                android:text="00"
+                                android:layout_weight="1"
+                                android:layout_marginRight="@dimen/margin_15"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/textsize14"
+                                android:textStyle="bold" />
+
+
+
+
+
+
+                        </LinearLayout>
+
+
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:background="@color/colorGray"/>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_15"
+                            android:layout_gravity="center_horizontal"
+                            android:weightSum="5"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start"
+                                android:layout_marginLeft="@dimen/margin_10"
+                                android:layout_marginTop="@dimen/_14dp"
+                                android:layout_marginRight="@dimen/margin_10"
+                                android:layout_weight="1"
+                                android:text="Full Course"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/textsize_12"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/txt_full_services_charge_grp"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start"
+                                android:layout_marginTop="@dimen/_14dp"
+                                android:text="00"
+                                android:layout_weight="1"
+                                android:layout_marginLeft="@dimen/margin_10"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/textsize14"
+                                android:textStyle="bold" />
+
+
+
+
+                            <TextView
+                                android:id="@+id/txt_full_discount_student_grp"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start"
+                                android:layout_marginTop="@dimen/_14dp"
+                                android:text="00"
+                                android:layout_weight="1"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/textsize14"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/txt_full_teacharce_earning_grp"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start"
+                                android:layout_marginTop="@dimen/_14dp"
+                                android:text="00"
+                                android:layout_weight="1"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/textsize14"
+                                android:textStyle="bold" />
+
+
+
+                            <TextView
+                                android:id="@+id/txt_full_student_price_grp"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start"
+                                android:layout_marginTop="@dimen/_14dp"
+                                android:text="00"
+                                android:layout_weight="1"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/textsize14"
+                                android:textStyle="bold" />
+
+
+
+
+
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:layout_marginTop="@dimen/margin_15"
+                            android:background="@color/colorGray"/>
+
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_50"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginLeft="@dimen/margin_20"
+                        android:layout_marginTop="@dimen/margin_15"
+                        android:layout_marginRight="@dimen/margin_20"
+                        android:layout_weight="1"
+                        android:background="@drawable/dotted_bg"
+                        android:clickable="true"
+                        android:contextClickable="true"
+                        android:focusable="true"
+                        android:gravity="center_vertical"
+                        android:text="+Add a subject"
+                        android:textAlignment="center"
+                        android:textAllCaps="true"
+                        android:textColor="@color/color_txtBlue"
+                        android:textSize="@dimen/textsize_16"
+                        android:textStyle="bold"
+                        tools:ignore="RtlCompat" />
+
+
+                    <LinearLayout
+                        android:id="@+id/lesson7Id_final"
+                        android:layout_width="@dimen/margin_280"
+                        android:layout_height="@dimen/_45dp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/margin_20"
+                        android:layout_marginTop="@dimen/margin_20"
+                        android:layout_marginRight="@dimen/margin_20"
+                        android:background="@drawable/edit_bgbutton"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+
+                        <TextView
+                            android:id="@+id/lesson_txt7Id_indivisual"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Next"
+                            android:textAllCaps="true"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+
+        </androidx.core.widget.NestedScrollView>
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

@@ -1,0 +1,43 @@
+<resources>
+    <string name="app_name">Twe-TutorSide</string>
+
+
+    <string name="next">Next</string>
+    <string name="start">Start</string>
+    <string name="skip"><u>Skip</u></string>
+    <string name="welcome1_text">Find your perfect teacher in under 3 minutes. Need help finding the right teacher? Call our friendly student counselors at 7019820293</string>
+    <string name="welsome">Welcome</string>
+    <string name="Category">Category</string>
+    <string name="Sub_Category">Sub-Category</string>
+    <string name="Subjects">Subjects</string>
+    <string name="Rs">\u20B9</string>
+    <string name="facebook_app_id">224822972505532</string>
+    <string name="checkInternet">Please Check Your Internet Connection</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="welcome2_text">Your instructor will motivate, support, and inspire you. Meet up with your teacher in person or connect with them online anywhere around the world!</string>
+    <string name="welcome3_text">Each lesson is customized to help you grow. Learn faster and easier than ever with personal attention from an expert instructor.</string>
+    <string name="olvia_parker">Ask a Question\nBecause of my experience as an english teacher,\nthese lesson greatly improve your reading\nskills and confidence.\n About Olivia Parker.</string>
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur magna tortor, semper eu feugiat eu, vehicula vitae lacus.</string>
+    <string name="welcome4_text">Success in learning often depends on finding the right teacher; someone that not only has expertise in the subject, but also knows how to inspire. The teaching style that works for one student may not work for another. As a parent or student, how do you find the right match? TWE bridges this gap</string>
+    <string name="privacy_Policy">By creating an acount, you agree to the TakeLessons Terms of Use and Privacy Policy.</string>
+    <string name="txt_profi">Listmg your services on TWE is contingent\nupon your successful completion oF a\nbackground investigation, which will\nsignal violations such as domestic\nviolence, sexual misconduct, or child\nabuse, that renders such individual ill-suited\nfor work wbh chkdren or adult\nstudents.There Is a $10.05 Fee to cover the\ncost of the background check.</string>
+    <string name="preiview"><![CDATA[<u>Preview a Profile</u>]]></string>
+    <string name="experience"><b>What experience levels</b> do you teach?</string>
+    <string name="teach"><b>Where</b> would you like to teach?</string>
+    <string name="classroom">"Online lessons happen through TEW\nClassroom, a teaching platform that\nincludes easy screen sharing, text chat,\naudio controls and lesson recording. "</string>
+    <string name="classroom2">"No downloads or installations are needed,\nyou just need to use Google Chrome\nas your browser.  NEXT "</string>
+    <string name="classroom0">Teaching Online <b>TWE Classroom</b></string>
+    <string name="bookLessons">When can students <b>book lessons?</b></string>
+    <string name="str">"Students will only be able to request\nlesson times within the hours on your\navailability calendar...tract the most\nstudents, rnake sure you have at least 10 "</string>
+    <string name="earn">How much do you want to <b>earn</b> per lesson</string>
+    <string name="calculate_price">"Enter the amount you would like to earn for\nlesson durabons you teach a. well add our\nmarketIng and service costs to calculate\nthe price paid by students. "</string>
+    <string name="txt_teaching">"Safety is everyone's PM concern. We require\nall teachers to complete low cost, high value\nbackground checks to show students they\ncan trust you. It only takes two minutes to\nsubmit your background check through our\nsimple and secure processor. Give yourself\nthe best opportunity to book new students. "</string>
+    <string name="txt_teaching2">"The listing of your services on any TWE\nproperty, or an offer of an independent\ncontractor engagement with TakeLessons, is\ncontingent upon your successful completion\nof a background investigation. The\nbackground investigation must be done at\nyour expense by a vendor approved by. "</string>
+    <string name="km">50 km</string>
+    <string name="plolice_verify">Safety is everyone\'s concern, we require all\nteachers to upload police verification\ncertificate to show students they can trust\nyou. Give yourself the best opportunity to\nbook new students</string>
+    <string name="policee">The listing of your services on any TWE property, or an offer of an independent contractor engagement with TWE, is contingent upon your successful completion of a background investigation. The background investigation must be done at your expense by a vendor approved by TWE The amount of one time 21500 will be deducted one time From your initial payout For background verification.</string>
+    <string name="sub_category_name">Sub Category Name</string>
+    <string name="today_ni_am_going_to_teach">Today,\nI am going to TEACH</string>
+    <string name="what_i_love">What I love</string>
+</resources>
