@@ -55,7 +55,7 @@ public class BookLessonActivity extends AppCompatActivity {
     int mMinute_one;
 
     Spinner spinnerSlot;
-    private String code[] ={"30 min ","60 min","90 min","120 min","150 min","180 min","210 min","240 min"};
+    private String code[] ={"60 min","120 min","180 min","240 min","300 min"};
     private int flags[]= {R.drawable.logo,R.drawable.logo,R.drawable.logo,R.drawable.logo};
 
     private ProgressBar progressBar;
@@ -74,10 +74,12 @@ public class BookLessonActivity extends AppCompatActivity {
     String language ="";
     String Affilations ="";
     String Awards ="";
-    String TimeZone ="";
     String location ="";
     String gender ="";
     String certification ="";
+    TextView txt_time_Zone;
+    String TimeZoneNew ="";
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -108,7 +110,15 @@ public class BookLessonActivity extends AppCompatActivity {
         txt_openTime=findViewById(R.id.txt_openTime);
         txt_closeTime=findViewById(R.id.txt_closeTime);
         spinnerSlot=findViewById(R.id.spinnerSlot);
+        txt_time_Zone=findViewById(R.id.txt_time_Zone);
         progressBar=findViewById(R.id.progressBar);
+
+        TimeZone tz = TimeZone.getDefault();
+        String TimeZone1= tz.getDisplayName(false, TimeZone.SHORT);
+
+        TimeZoneNew = "( "+TimeZone1+" ) "+tz.getDisplayName();
+
+        txt_time_Zone.setText(TimeZoneNew);
 
         sessionManager = new SessionManager(BookLessonActivity.this);
 
@@ -132,12 +142,12 @@ public class BookLessonActivity extends AppCompatActivity {
 
                                 mHour = hourOfDay;
                                 mMinute = minute;
-                                txt_openTime.setText(hourOfDay + ":" + minute+" AM");
+                                txt_openTime.setText(hourOfDay + ":" + minute);
 
                                 FinalOepnTime = hourOfDay+":" + minute;
 
                             }
-                        }, mHour, mMinute, false);
+                        }, mHour, mMinute, true);
                 timePickerDialog.show();
 
             }
@@ -160,12 +170,12 @@ public class BookLessonActivity extends AppCompatActivity {
 
                                 mHour = hourOfDay;
                                 mMinute = minute;
-                                txt_openTime.setText(hourOfDay + ":" + minute+" AM");
+                                txt_openTime.setText(hourOfDay + ":" + minute);
 
                                 FinalOepnTime = hourOfDay+":" + minute;
 
                             }
-                        }, mHour, mMinute, false);
+                        }, mHour, mMinute, true);
                 timePickerDialog.show();
 
             }
@@ -199,7 +209,7 @@ public class BookLessonActivity extends AppCompatActivity {
 
                                 FinalCloseTime = hourOfDay+":" + minute;
                             }
-                        }, mHour_one, mMinute_one, false);
+                        }, mHour_one, mMinute_one, true);
                 timePickerDialog.show();
 
             }
@@ -227,7 +237,7 @@ public class BookLessonActivity extends AppCompatActivity {
                                 FinalCloseTime = hourOfDay+":" + minute;
 
                             }
-                        }, mHour_one, mMinute_one, false);
+                        }, mHour_one, mMinute_one, true);
                 timePickerDialog.show();
 
             }
@@ -269,7 +279,9 @@ public class BookLessonActivity extends AppCompatActivity {
                 addTimeApi();
 
             }else {
+
                 Toast.makeText(this, R.string.checkInternet, Toast.LENGTH_SHORT).show();
+
             }
         }
        // startActivity(new Intent(BookLessonActivity.this,CategorySelectActivity.class));
@@ -298,7 +310,6 @@ public class BookLessonActivity extends AppCompatActivity {
 
                         progressBar.setVisibility(View.GONE);
 
-
                         Intent intent=new Intent(BookLessonActivity.this,TimeSelectedWeekView.class);
                         intent.putExtra("about",about);
                         intent.putExtra("dob",dob);
@@ -312,7 +323,7 @@ public class BookLessonActivity extends AppCompatActivity {
                         intent.putExtra("location",location);
                         intent.putExtra("gender",gender);
                         intent.putExtra("certification",certification);
-                        intent.putExtra("TimeZone",TimeZone);
+                        intent.putExtra("TimeZone",TimeZoneNew);
                         startActivity(intent);
 
                        // startActivity(new Intent(BookLessonActivity.this,TimeSelectedWeekView.class));
@@ -322,7 +333,6 @@ public class BookLessonActivity extends AppCompatActivity {
                         Toast.makeText(BookLessonActivity.this, message, Toast.LENGTH_SHORT).show();
 
                         progressBar.setVisibility(View.GONE);
-
                     }
 
                 } catch (JSONException e) {

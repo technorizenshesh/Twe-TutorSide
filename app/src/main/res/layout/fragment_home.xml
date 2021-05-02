@@ -8,10 +8,21 @@
     android:fitsSystemWindows="true"
     tools:context=".fragments.HomeFragment">
 
+    <ProgressBar
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_centerInParent="true"
+        android:id="@+id/progressBar"
+        android:background="@drawable/progresh_background"
+        android:elevation="6dp"
+        android:padding="5dp"
+        android:indeterminate="true"
+        android:indeterminateTintMode="src_atop"
+        android:indeterminateTint="@color/colorPrimary"
+        android:visibility="gone"
+        />
 
-
-
-        <LinearLayout
+    <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -45,8 +56,9 @@
 
 
                         <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:id="@+id/profile_image"
+                            android:layout_width="@dimen/_50sdp"
+                            android:layout_height="@dimen/_50sdp"
                             android:scaleType="fitXY"
                             android:src="@drawable/tutor_profi" />
 
@@ -116,6 +128,7 @@
 
 
                         <TextView
+                            android:visibility="gone"
                             android:layout_width="@dimen/margin_65"
                             android:layout_height="wrap_content"
                             android:background="@drawable/home_curencybg"
@@ -133,6 +146,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_145"
@@ -657,7 +671,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"/>
 
-
             </LinearLayout>
 
             </androidx.core.widget.NestedScrollView>
@@ -666,6 +679,17 @@
         </LinearLayout>
 
 
+
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/txt_empty"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No Data Found"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/textsize_16"
+        android:textStyle="bold" />
 
 </RelativeLayout>
 

@@ -4,6 +4,5 @@ import androidx.fragment.app.Fragment;
 
 public interface FragmentListener {
     default void click(Fragment fragment) {
-
     }
 }

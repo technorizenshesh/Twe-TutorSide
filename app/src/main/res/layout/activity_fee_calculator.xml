@@ -121,6 +121,8 @@
         </LinearLayout>
 
 
+
+
         <androidx.core.widget.NestedScrollView
             android:visibility="visible"
             android:layout_width="match_parent"
@@ -131,6 +133,40 @@
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:layout_marginLeft="@dimen/margin_20"
+                        android:layout_marginTop="@dimen/_14dp"
+                        android:text="My Subject : "
+                        android:textColor="@color/colorBlack"
+                        android:textSize="@dimen/_16sdp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txt_subject"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:layout_marginLeft="@dimen/margin_20"
+                        android:layout_marginTop="@dimen/_14dp"
+                        android:text=""
+                        android:textColor="@color/colorBlack"
+                        android:textSize="@dimen/textsize_16"
+                        android:textStyle="bold" />
+
+
+                </LinearLayout>
+
+
 
                 <LinearLayout
                     android:id="@+id/LL_indivisual"
@@ -242,7 +278,7 @@
                                 android:layout_marginRight="@dimen/margin_15"
                                 android:layout_weight="1"
                                 android:background="@color/colorWhite"
-                                android:hint="\u20B91000"
+                                android:hint="Lower the price the more you get students"
                                 android:textColor="@color/colorBlack"
                                 android:textColorHint="@color/colorGray"
                                 android:textSize="@dimen/textsize13"
@@ -284,7 +320,7 @@
                                 android:layout_marginRight="@dimen/margin_15"
                                 android:layout_weight="1"
                                 android:background="@color/colorWhite"
-                                android:hint="\u20B91000"
+                                android:hint=" Hint: 36 hours"
                                 android:textColor="@color/colorBlack"
                                 android:textColorHint="@color/colorGray"
                                 android:textSize="@dimen/textsize13"
@@ -369,7 +405,7 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginRight="@dimen/margin_10"
-                                android:text="Twe Service\nCharges"
+                                android:text="Service\nCharges"
                                 android:layout_marginLeft="@dimen/margin_10"
                                 android:layout_weight="1"
                                 android:textColor="@color/colorBlack"
@@ -384,7 +420,7 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
-                                android:text="Discount\n/to student"
+                                android:text="Student\n Discount"
                                 android:layout_weight="1"
                                 android:layout_marginRight="@dimen/margin_15"
                                 android:textColor="@color/colorBlack"
@@ -396,7 +432,7 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
-                                android:text="Teachers\nearning"
+                                android:text="Your\n Earning"
                                 android:layout_weight="1"
                                 android:layout_marginRight="@dimen/margin_15"
                                 android:textColor="@color/colorBlack"
@@ -440,6 +476,7 @@
                             android:orientation="horizontal">
 
                             <TextView
+                                android:gravity="left"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="start"
@@ -453,6 +490,7 @@
                                 android:textStyle="bold" />
 
                             <TextView
+                                android:gravity="left"
                                 android:id="@+id/txt_hr_services_charge"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
@@ -470,6 +508,7 @@
 
 
                             <TextView
+                                android:gravity="left"
                                 android:id="@+id/txt_hr_dicount_student"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
@@ -483,6 +522,7 @@
                                 android:textStyle="bold" />
 
                             <TextView
+                                android:gravity="left"
                                 android:id="@+id/txt_hr_teachse_earning"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
@@ -498,6 +538,7 @@
 
 
                             <TextView
+                                android:gravity="left"
                                 android:id="@+id/txt_hr_student_prices"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
@@ -549,6 +590,7 @@
                                 android:textStyle="bold" />
 
                             <TextView
+                                android:gravity="left"
                                 android:id="@+id/txt_weekly_services_charge"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
@@ -566,6 +608,7 @@
 
 
                             <TextView
+                                android:gravity="left"
                                 android:id="@+id/txt_weekly_dicount_student"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
@@ -579,6 +622,7 @@
                                 android:textStyle="bold" />
 
                             <TextView
+                                android:gravity="left"
                                 android:id="@+id/txt_weekly_teacharse_earingn"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
@@ -594,6 +638,7 @@
 
 
                             <TextView
+                                android:gravity="left"
                                 android:id="@+id/txt_weekly_student_price"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
@@ -643,6 +688,7 @@
                                 android:textStyle="bold" />
 
                             <TextView
+                                android:gravity="left"
                                 android:id="@+id/txt_monthly_services_charge"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
@@ -660,6 +706,7 @@
 
 
                             <TextView
+                                android:gravity="left"
                                 android:id="@+id/txt_monthly_discount_student"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
@@ -673,6 +720,7 @@
                                 android:textStyle="bold" />
 
                             <TextView
+                                android:gravity="left"
                                 android:id="@+id/txt_monthly_teacharce_earning"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
@@ -688,6 +736,7 @@
 
 
                             <TextView
+                                android:gravity="left"
                                 android:id="@+id/txt_monthly_student_price"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
@@ -724,6 +773,7 @@
                             android:orientation="horizontal">
 
                             <TextView
+                                android:gravity="left"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="start"
@@ -737,6 +787,7 @@
                                 android:textStyle="bold" />
 
                             <TextView
+                                android:gravity="left"
                                 android:id="@+id/txt_full_services_charge"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
@@ -753,6 +804,7 @@
 
 
                             <TextView
+                                android:gravity="left"
                                 android:id="@+id/txt_full_discount_student"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
@@ -765,6 +817,7 @@
                                 android:textStyle="bold" />
 
                             <TextView
+                                android:gravity="left"
                                 android:id="@+id/txt_full_teacharce_earning"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
@@ -779,6 +832,7 @@
 
 
                             <TextView
+                                android:gravity="left"
                                 android:id="@+id/txt_full_student_price"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
@@ -1046,7 +1100,7 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginRight="@dimen/margin_10"
-                                android:text="Twe Service\nCharges"
+                                android:text="Service\nCharges"
                                 android:layout_marginLeft="@dimen/margin_10"
                                 android:layout_weight="1"
                                 android:textColor="@color/colorBlack"
@@ -1061,7 +1115,7 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
-                                android:text="Discount\n/to student"
+                                android:text="Discount\nstudent"
                                 android:layout_weight="1"
                                 android:layout_marginRight="@dimen/margin_15"
                                 android:textColor="@color/colorBlack"
@@ -1493,7 +1547,8 @@
 
 
                     <TextView
-                        android:visibility="gone"
+                        android:id="@+id/txt_add_subject"
+                        android:visibility="visible"
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
                         android:layout_gravity="center_horizontal"

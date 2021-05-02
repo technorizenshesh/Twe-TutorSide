@@ -7,46 +7,46 @@ public class MonthlyDetails {
 
     @SerializedName("service_charge")
     @Expose
-    private Integer serviceCharge;
+    private Double serviceCharge;
     @SerializedName("discount_to_student")
     @Expose
-    private Integer discountToStudent;
+    private Double discountToStudent;
     @SerializedName("teachers_earning")
     @Expose
-    private Integer teachersEarning;
+    private Double teachersEarning;
     @SerializedName("student_price")
     @Expose
-    private Integer studentPrice;
+    private Double studentPrice;
 
-    public Integer getServiceCharge() {
+    public Double getServiceCharge() {
         return serviceCharge;
     }
 
-    public void setServiceCharge(Integer serviceCharge) {
+    public void setServiceCharge(Double serviceCharge) {
         this.serviceCharge = serviceCharge;
     }
 
-    public Integer getDiscountToStudent() {
+    public Double getDiscountToStudent() {
         return discountToStudent;
     }
 
-    public void setDiscountToStudent(Integer discountToStudent) {
+    public void setDiscountToStudent(Double discountToStudent) {
         this.discountToStudent = discountToStudent;
     }
 
-    public Integer getTeachersEarning() {
+    public Double getTeachersEarning() {
         return teachersEarning;
     }
 
-    public void setTeachersEarning(Integer teachersEarning) {
+    public void setTeachersEarning(Double teachersEarning) {
         this.teachersEarning = teachersEarning;
     }
 
-    public Integer getStudentPrice() {
+    public Double getStudentPrice() {
         return studentPrice;
     }
 
-    public void setStudentPrice(Integer studentPrice) {
+    public void setStudentPrice(Double studentPrice) {
         this.studentPrice = studentPrice;
     }
 }

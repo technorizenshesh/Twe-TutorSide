@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-
-
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/padding_5"
         android:orientation="vertical">
-
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -41,10 +40,12 @@
 
 
                     <ImageView
+                        android:id="@+id/img_profile"
                         android:layout_width="@dimen/margin_50"
                         android:layout_height="@dimen/margin_50"
                         android:scaleType="fitXY"
-                        android:src="@drawable/tutor_profi" />
+                        android:src="@drawable/tutor_profi"
+                        />
 
 
                     <LinearLayout
@@ -72,24 +73,29 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:paddingLeft="@dimen/margin_20"
-                                    android:text="Neil Woods"
+                                    android:text=""
                                     android:textColor="@color/red"
                                     android:textSize="@dimen/textsize14"
                                     android:textStyle="bold" />
 
 
                                 <TextView
+                                    android:layout_marginLeft="@dimen/_5sdp"
+                                    android:id="@+id/txt_DOB"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:gravity="center"
-                                    android:text="   24Years"
+                                    android:text=""
                                     android:textColor="@color/colorGray"
                                     android:textSize="@dimen/textsize13"
                                     android:textStyle="bold" />
 
                             </LinearLayout>
 
+
+
                             <LinearLayout
+                                android:visibility="gone"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginRight="@dimen/margin_10"
@@ -119,6 +125,35 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingLeft="@dimen/margin_20"
+                                android:text="Gender "
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/textsize14"
+                                android:textStyle="bold" />
+
+
+                            <TextView
+                                android:id="@+id/txt_gender"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="  Male"
+                                android:textColor="@color/colorGray"
+                                android:textSize="@dimen/textsize13"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
                             android:orientation="vertical">
 
 
@@ -129,6 +164,7 @@
 
 
                                 <TextView
+                                    android:id="@+id/txt_order_id"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:paddingLeft="@dimen/margin_20"
@@ -190,18 +226,19 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:text="Subject                       : "
+                            android:text="subject                       : "
                             android:textColor="@color/colorGray"
                             android:textSize="@dimen/textsize14"
                             android:textStyle="bold" />
 
 
                         <TextView
+                            android:id="@+id/txt_subject"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_marginLeft="@dimen/margin_20"
-                            android:text="Maths"
+                            android:text=""
                             android:textColor="@color/colorGray"
                             android:textSize="@dimen/textsize14"
                             android:textStyle="bold" />
@@ -211,6 +248,7 @@
 
 
                     <LinearLayout
+                        android:visibility="visible"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
@@ -227,6 +265,7 @@
 
 
                         <TextView
+                            android:id="@+id/txt_classes"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
@@ -256,6 +295,7 @@
 
 
                         <TextView
+                            android:id="@+id/txt_requst_for"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
@@ -268,11 +308,42 @@
 
                     </LinearLayout>
 
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="course duration       :  "
+                            android:textColor="@color/colorGray"
+                            android:textSize="@dimen/textsize14"
+                            android:textStyle="bold" />
+
+
+                        <TextView
+                            android:id="@+id/txt_request_duration_time"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="@dimen/margin_20"
+                            android:text="10 hr"
+                            android:textColor="@color/colorGray"
+                            android:textSize="@dimen/textsize14"
+                            android:textStyle="bold" />
+
+
+                    </LinearLayout>
+
 
                 </LinearLayout>
 
 
                 <TextView
+                    android:visibility="gone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/margin_20"
@@ -283,12 +354,14 @@
 
 
                 <LinearLayout
+                    android:layout_marginTop="@dimen/_5sdp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
 
                     <ImageView
+                        android:visibility="gone"
                         android:layout_width="@dimen/margin_18"
                         android:layout_height="@dimen/margin_18"
                         android:layout_gravity="center"
@@ -297,6 +370,7 @@
 
 
                     <TextView
+                        android:visibility="gone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -316,6 +390,7 @@
 
 
                     <TextView
+                        android:id="@+id/txt_start_date"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -374,6 +449,7 @@
 
 
                         <ImageView
+                            android:id="@+id/reject_reuest"
                             android:layout_width="@dimen/margin_30"
                             android:layout_height="@dimen/margin_30"
                             android:layout_gravity="center"
@@ -389,6 +465,7 @@
                             android:layout_gravity="center"
                             android:scaleType="fitXY"
                             android:src="@drawable/right" />
+
                     </LinearLayout>
 
 

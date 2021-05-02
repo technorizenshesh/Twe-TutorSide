@@ -15,7 +15,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/margin_50"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -292,6 +293,7 @@
 
 
             <LinearLayout
+                android:id="@+id/ll_privacy_policy"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_15"
@@ -322,6 +324,7 @@
 
 
             <LinearLayout
+                android:id="@+id/ll_terms_condition"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_15"
@@ -352,6 +355,7 @@
 
 
             <LinearLayout
+                android:id="@+id/ll_ContactUs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/padding_15"

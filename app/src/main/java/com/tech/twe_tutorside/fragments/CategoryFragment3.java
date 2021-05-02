@@ -257,8 +257,12 @@ public class CategoryFragment3 extends Fragment {
             @Override
             public void onItemClick(View view, int position, TutorSubjectDataModel model) {
 
+                Preference.save(getActivity(),Preference.KEY_tutor_category_subJECT_id,model.getId());
+
+                Preference.save(getActivity(),Preference.KEY_tutor_category_subJECT_Name,model.getName());
+
                 startActivity(new Intent(getActivity(), FeeCalculatorActivity.class));
-                Objects.requireNonNull(getActivity()).finish();
+               // Objects.requireNonNull(getActivity()).finish();
             }
         });
     }

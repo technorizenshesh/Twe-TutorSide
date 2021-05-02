@@ -56,7 +56,9 @@ public class FeeCalculatorActivity extends AppCompatActivity{
     private String gender ="";
     private String certification ="";
     String per_hour_payment="";
+    String per_hour_payment_grp="";
     String full_course_time="";
+    String full_course_time_grp="";
 
     TextView txt1_homeTab_individual;
     TextView txt3_homeTab_grp;
@@ -115,21 +117,29 @@ public class FeeCalculatorActivity extends AppCompatActivity{
 
     ProgressBar progressBar;
 
-     String SignIndivisual_Check ="0";
+    String SignIndivisual_Check ="0";
 
-     LinearLayout lesson7Id_grp;
-     LinearLayout lesson7Id_final;
+    LinearLayout lesson7Id_grp;
+    LinearLayout lesson7Id_final;
 
     String isIndivisual ="";
     String isGroup ="";
 
+
+    String Price_indivisual="";
+    String total_duration_time_indivisual="";
+
+    String Price_grp="";
+    String total_duration_time_grp="";
+    TextView txt_subject;
+    TextView txt_add_subject;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fee_calculator);
 
-     Intent intent=getIntent();
+        Intent intent=getIntent();
 
         if(intent !=null)
         {
@@ -153,10 +163,14 @@ public class FeeCalculatorActivity extends AppCompatActivity{
             saturday=intent.getStringExtra("saturday").toString();
             sunday=intent.getStringExtra("sunday").toString();
             subject=intent.getStringExtra("subject").toString();
+
         }
 
+        findView();
 
-         findView();
+        String SUBJECTName = Preference.get(FeeCalculatorActivity.this,Preference.KEY_tutor_category_subJECT_Name);
+
+        txt_subject.setText(SUBJECTName);
 
         txt1_homeTab_individual.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -196,15 +210,14 @@ public class FeeCalculatorActivity extends AppCompatActivity{
         lesson7Id_indivisual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                String Price_indivisual =edt_perHr_indivisual.getText().toString();
-                String total_duration_time =edt_Complte_course_hor_indivisual.getText().toString();
+                Price_indivisual =edt_perHr_indivisual.getText().toString();
+                total_duration_time_indivisual =edt_Complte_course_hor_indivisual.getText().toString();
 
                 if(Price_indivisual.equalsIgnoreCase(""))
                 {
                     Toast.makeText(FeeCalculatorActivity.this, "Please Enter sigle Student perhour price ", Toast.LENGTH_SHORT).show();
 
-                }else  if(total_duration_time.equalsIgnoreCase(""))
+                }else  if(total_duration_time_indivisual.equalsIgnoreCase(""))
                 {
 
                     Toast.makeText(FeeCalculatorActivity.this, "Please Enter sigle Student Duration Time ", Toast.LENGTH_SHORT).show();
@@ -212,7 +225,7 @@ public class FeeCalculatorActivity extends AppCompatActivity{
                 }else
                 {
                     progressBar.setVisibility(View.VISIBLE);
-                    get_calculation(Price_indivisual,total_duration_time);
+                    get_calculation(Price_indivisual,total_duration_time_indivisual);
                 }
             }
         });
@@ -221,14 +234,14 @@ public class FeeCalculatorActivity extends AppCompatActivity{
             @Override
             public void onClick(View v) {
 
-                String Price_grp =edt_perHr_grp.getText().toString();
-                String total_duration_time =edt_Complte_course_hor_grp.getText().toString();
+                Price_grp =edt_perHr_grp.getText().toString();
+                total_duration_time_grp =edt_Complte_course_hor_grp.getText().toString();
 
                 if(Price_grp.equalsIgnoreCase(""))
                 {
                     Toast.makeText(FeeCalculatorActivity.this, "Please Enter sigle Student perhour price ", Toast.LENGTH_SHORT).show();
 
-                }else  if(total_duration_time.equalsIgnoreCase(""))
+                }else  if(total_duration_time_grp.equalsIgnoreCase(""))
                 {
 
                     Toast.makeText(FeeCalculatorActivity.this, "Please Enter sigle Student Duration Time ", Toast.LENGTH_SHORT).show();
@@ -236,7 +249,7 @@ public class FeeCalculatorActivity extends AppCompatActivity{
                 }else
                 {
                     progressBar.setVisibility(View.VISIBLE);
-                    get_calculation(Price_grp,total_duration_time);
+                    get_calculation(Price_grp,total_duration_time_grp);
                 }
             }
         });
@@ -279,22 +292,53 @@ public class FeeCalculatorActivity extends AppCompatActivity{
                     intent.putExtra("saturday",""+saturday);
                     intent.putExtra("sunday",""+sunday);
                     intent.putExtra("subject","math");
-                    intent.putExtra("per_hour_payment",per_hour_payment);
-                    intent.putExtra("full_course_time",full_course_time);
+                    intent.putExtra("per_hour_payment",Price_indivisual);
+                    intent.putExtra("full_course_time",total_duration_time_indivisual);
+
+                    intent.putExtra("per_hour_payment_grp",Price_grp);
+                    intent.putExtra("full_course_time_grp",total_duration_time_grp);
                     startActivity(intent);
-
                 }
-
             }
         });
 
+        txt_add_subject.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent=new Intent(FeeCalculatorActivity.this,CategorySelectActivity.class);
+                intent.putExtra("about",about);
+                intent.putExtra("dob",dob);
+                intent.putExtra("education",education);
+                intent.putExtra("language",language);
+                intent.putExtra("Affilations",Affilations);
+                intent.putExtra("Awards",Awards);
+                intent.putExtra("where_to_teach",where_to_teach);
+                intent.putExtra("teach_distance",teach_distance);
+                intent.putExtra("teach_distance",teach_distance);
+                intent.putExtra("location",location);
+                intent.putExtra("gender",gender);
+                intent.putExtra("certification",certification);
+                intent.putExtra("TimeZone",TimeZone);
+                intent.putExtra("mondayTime",""+monday);
+                intent.putExtra("tuesday",""+tuesday);
+                intent.putExtra("wednesday",""+wednesday);
+                intent.putExtra("thursday",""+thursday);
+                intent.putExtra("friday",""+friday);
+                intent.putExtra("saturday",""+saturday);
+                intent.putExtra("sunday",""+sunday);
+                startActivity(intent);
+            }
+        });
 
     }
 
     private void findView() {
 
 
+        txt_add_subject = findViewById(R.id.txt_add_subject);
         progressBar = findViewById(R.id.progressBar);
+        txt_subject = findViewById(R.id.txt_subject);
         txt1_homeTab_individual = findViewById(R.id.txt1_homeTab);
         txt3_homeTab_grp = findViewById(R.id.txt3_homeTab);
         LL_indivisual = findViewById(R.id.LL_indivisual);
@@ -357,7 +401,6 @@ public class FeeCalculatorActivity extends AppCompatActivity{
     /*public void nxtPolice(View view) {
          per_hour_payment=edt_perHr.getText().toString();
          full_course_time=edt_Complte_course_hor.getText().toString();
-
         if(per_hour_payment.equalsIgnoreCase(""))
         {
             Toast.makeText(this, "Please Enter perHor Payment", Toast.LENGTH_SHORT).show();
@@ -368,20 +411,21 @@ public class FeeCalculatorActivity extends AppCompatActivity{
         }else
         {
 
-
         }
 
        // startActivity(new Intent(this,PoliceVerifyActivity.class));
+
     }*/
 
     private void get_calculation(String PerHour,String full_course_time) {
 
         String UserId  = Preference.get(FeeCalculatorActivity.this,Preference.KEY_USER_ID);
 
+
         Call<GetCalculaterModel> call = RetrofitClients
                 .getInstance()
                 .getApi()
-                .get_calculation("1",PerHour,full_course_time);
+                .get_calculation(UserId,PerHour,full_course_time);
 
         call.enqueue(new Callback<GetCalculaterModel>() {
             @Override

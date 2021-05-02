@@ -32,6 +32,7 @@ public class BuildingProfiActivity extends AppCompatActivity {
     }
 
     public void createProfi(View view) {
+
         startActivity(new Intent(BuildingProfiActivity.this,FillDetailsActivity.class));
     }
 }

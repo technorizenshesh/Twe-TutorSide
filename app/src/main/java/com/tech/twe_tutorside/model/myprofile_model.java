@@ -6,7 +6,6 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 public class myprofile_model {
-
     @SerializedName("result")
     @Expose
     private List<myprofile_data_model> result = null;
@@ -40,4 +39,5 @@ public class myprofile_model {
     public void setStatus(String status) {
         this.status = status;
     }
+
 }

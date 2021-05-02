@@ -71,4 +71,5 @@ public class AddressDetails {
     public void setLon(String lon) {
         this.lon = lon;
     }
+
 }

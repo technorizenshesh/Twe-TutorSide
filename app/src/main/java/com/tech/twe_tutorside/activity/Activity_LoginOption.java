@@ -39,6 +39,7 @@ import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.messaging.FirebaseMessaging;
+import com.tech.twe_tutorside.GPSTracker;
 import com.tech.twe_tutorside.Preference;
 import com.tech.twe_tutorside.R;
 import com.tech.twe_tutorside.utils.RetrofitClients;
@@ -78,6 +79,10 @@ public class Activity_LoginOption extends AppCompatActivity implements GoogleApi
     //FaceBook
     CallbackManager mCallbackManager;
     LoginButton loginButton;
+
+    GPSTracker gpsTracker;
+    String latitude="";
+    String longitude="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -179,6 +184,15 @@ public class Activity_LoginOption extends AppCompatActivity implements GoogleApi
             }
         });
 
+        //Gps Lat Long
+        gpsTracker=new GPSTracker(this);
+        if(gpsTracker.canGetLocation()){
+            latitude = String.valueOf(gpsTracker.getLatitude());
+            longitude = String.valueOf(gpsTracker.getLongitude());
+        }else{
+            gpsTracker.showSettingsAlert();
+        }
+
     }
 
     //Google Login
@@ -233,7 +247,7 @@ public class Activity_LoginOption extends AppCompatActivity implements GoogleApi
 
                         } else {
 
-                            Toast.makeText(Activity_LoginOption.this, ""+task.getException(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Activity_LoginOption.this, "12"+task.getException(), Toast.LENGTH_SHORT).show();
 
                         }
                     }
@@ -280,12 +294,11 @@ public class Activity_LoginOption extends AppCompatActivity implements GoogleApi
         Call<ResponseBody> call = RetrofitClients
                 .getInstance()
                 .getApi()
-                .Social_login(UserName,email,Mobile,"Student","25.00","25.00",SocialId,token);
+                .Social_login(UserName,email,Mobile,"Tutor",latitude,longitude,SocialId,token);
 
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-
                 try {
                     progressBar.setVisibility(View.GONE);
                     JSONObject jsonObject = new JSONObject(response.body().string());
@@ -296,21 +309,34 @@ public class Activity_LoginOption extends AppCompatActivity implements GoogleApi
 
                     JSONObject resultOne = jsonObject.getJSONObject("result");
 
+                    String check_status = resultOne.getString("check_status");
+                    String username = resultOne.getString("username");
+                    String image = resultOne.getString("image");
                     String UserId = resultOne.getString("id");
 
                     if (status.equalsIgnoreCase("1")) {
 
                         sessionManager.saveUserId(UserId);
 
-                        Preference.save(Activity_LoginOption.this,Preference.KEYType_login,"social_login");
+                        Preference.save(Activity_LoginOption.this,Preference.KEYType_login,"login");
+                        Preference.save(Activity_LoginOption.this, Preference.KEY_check_status,check_status);
+                        Preference.save(Activity_LoginOption.this, Preference.KEY_USER_ID,UserId);
+                        Preference.save(Activity_LoginOption.this, Preference.KEY_username,username);
 
                         Toast.makeText(Activity_LoginOption.this, message, Toast.LENGTH_SHORT).show();
-                        //Intent intent = new Intent(LoginActivity.this, HomeActvity.class);
-                        Intent intent = new Intent(Activity_LoginOption.this, BuildingProfiActivity.class);
-                        startActivity(intent);
-                        finish();
+
+                        if(check_status.equalsIgnoreCase("1"))
+                        {
+                            startActivity(new Intent(Activity_LoginOption.this, HomeActvity.class));
+
+                        }else
+                        {
+                            startActivity(new Intent(Activity_LoginOption.this, BuildingProfiActivity.class));
+
+                        }
 
                     } else {
+
                         Toast.makeText(Activity_LoginOption.this, result, Toast.LENGTH_SHORT).show();
 
                     }

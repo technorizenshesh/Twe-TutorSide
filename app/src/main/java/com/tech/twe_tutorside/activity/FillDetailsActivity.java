@@ -1,3 +1,4 @@
+
 package com.tech.twe_tutorside.activity;
 
 import android.Manifest;
@@ -14,6 +15,7 @@ import android.provider.MediaStore;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -37,6 +39,7 @@ import com.tech.twe_tutorside.Preference;
 import com.tech.twe_tutorside.R;
 import com.tech.twe_tutorside.adapter.CountrySpinnerAdapter;
 import com.tech.twe_tutorside.fragments.BottomSheetFragment;
+import com.tech.twe_tutorside.listner.MyClickListner;
 import com.tech.twe_tutorside.utils.FileUtil;
 import com.tech.twe_tutorside.utils.SessionManager;
 import com.theartofdev.edmodo.cropper.CropImage;
@@ -50,20 +53,27 @@ import java.util.List;
 import id.zelory.compressor.Compressor;
 
 
-public class FillDetailsActivity extends AppCompatActivity {
+public class FillDetailsActivity extends AppCompatActivity implements MyClickListner {
 
     private LinearLayout LL_user_profile;
     private LinearLayout LL_calender;
     private LinearLayout LL_add_certificate_one;
     private LinearLayout LL_add_certificate_two;
+    private LinearLayout ll_certi;
+    private LinearLayout LL_add_imgage;
+    private LinearLayout ll_img;
     private TextView txt_dob;
     private TextView txt_age;
 
     private Bitmap bitmap;
     private Uri resultUri;
     public static File UserProfile_img, compressedImage, compressActualFile;
-    private File imageFilePath_certificate, compressedImage_two;
-    private File imageFilePath_certificate_one, compressedImage_two_one;
+    public static File imageFilePath_certificate, compressedImage_two;
+    public static File imageFilePath_certificate_one, compressedImage_two_one;
+    public static File imageFilePath_certificate_two;
+    public static File imageFilePath_certificate_three;
+    public static File imageFilePath_certificate_four;
+    public static File imageFilePath_certificate_five;
     boolean isProfileImage=false;
     boolean isCertificate=false;
     boolean isCertificate_one=false;
@@ -85,6 +95,7 @@ public class FillDetailsActivity extends AppCompatActivity {
     private EditText edt_language;
     private EditText edt_Affilations;
     private EditText edt_Awards;
+    private EditText edt_certificate;
 
     String about ="";
     String dob ="";
@@ -92,7 +103,32 @@ public class FillDetailsActivity extends AppCompatActivity {
     String language ="";
     String Affilations ="";
     String Awards ="";
+    String certificate ="";
     String Location ="";
+    TextView txt_location;
+    MyClickListner listner;
+    String Gender="";
+    String LocationId="";
+
+    LinearLayout ll_image;
+    LinearLayout ll_img_set;
+    LinearLayout ll_img_set_img;
+
+
+    ImageView img_certi_one;
+    ImageView img_certi_two;
+    ImageView img_certi_three;
+    ImageView img_certi_four;
+    ImageView img_certi_five;
+
+    ImageView img_one;
+    ImageView img_two;
+    ImageView img_three;
+    ImageView img_four;
+    ImageView img_five;
+
+    int Count = 0;
+    int Count_img = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,7 +136,8 @@ public class FillDetailsActivity extends AppCompatActivity {
         setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         if (Build.VERSION.SDK_INT >= 21) {
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE |
-                    View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);}
+                    View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+        }
 
         setContentView(R.layout.activity_fill_details);
 
@@ -127,11 +164,35 @@ public class FillDetailsActivity extends AppCompatActivity {
                                     showSettingDialogue();
                                 }
                             }
-
                             @Override
                             public void onPermissionRationaleShouldBeShown(List<PermissionRequest> permissions, PermissionToken token) {
-                                token.continuePermissionRequest();
+                                    token.continuePermissionRequest();
+                                }
+                        }).check();
+            }
+        });
+        ll_image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Dexter.withActivity(FillDetailsActivity.this)
+                        .withPermissions(Manifest.permission.CAMERA,
+                                Manifest.permission.READ_EXTERNAL_STORAGE,
+                                Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                        .withListener(new MultiplePermissionsListener() {
+                            @Override
+                            public void onPermissionsChecked(MultiplePermissionsReport report) {
+                                if (report.areAllPermissionsGranted()) {
+                                    Intent intent = CropImage.activity().setGuidelines(CropImageView.Guidelines.ON).getIntent(FillDetailsActivity.this);
+                                    startActivityForResult(intent, 1);
+                                } else {
+                                    showSettingDialogue();
+                                }
                             }
+                            @Override
+                            public void onPermissionRationaleShouldBeShown(List<PermissionRequest> permissions, PermissionToken token) {
+                                    token.continuePermissionRequest();
+                                }
                         }).check();
             }
         });
@@ -157,7 +218,10 @@ public class FillDetailsActivity extends AppCompatActivity {
 
                                 String age = getAge(year,(monthOfYear+1),dayOfMonth);
 
-                                txt_age.setText(age+" Year");
+                                String CalcuAge= getAge(year,monthOfYear,dayOfMonth);
+
+                                txt_age.setText(CalcuAge+" Years");
+
 
                             }
                         }, mYear, mMonth, mDay);
@@ -211,8 +275,16 @@ public class FillDetailsActivity extends AppCompatActivity {
                             @Override
                             public void onPermissionsChecked(MultiplePermissionsReport report) {
                                 if (report.areAllPermissionsGranted()) {
-                                    Intent intent = CropImage.activity().setGuidelines(CropImageView.Guidelines.ON).getIntent(FillDetailsActivity.this);
-                                    startActivityForResult(intent, 3);
+                                    if(Count<5)
+                                    {
+                                        Count++;
+                                        Intent intent = CropImage.activity().setGuidelines(CropImageView.Guidelines.ON).getIntent(FillDetailsActivity.this);
+                                        startActivityForResult(intent, 3);
+                                    }else
+                                    {
+                                        Toast.makeText(FillDetailsActivity.this, "Maximum five certificate Upload.", Toast.LENGTH_SHORT).show();
+                                    }
+
                                 } else {
                                     showSettingDialogue();
                                 }
@@ -226,24 +298,161 @@ public class FillDetailsActivity extends AppCompatActivity {
             }
         });
 
-       String AddressId = Preference.get(FillDetailsActivity.this, Preference.KEY_Address_id);
+        ll_certi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-        Toast.makeText(this, AddressId, Toast.LENGTH_SHORT).show();
+                Dexter.withActivity(FillDetailsActivity.this)
+                        .withPermissions(Manifest.permission.CAMERA,
+                                Manifest.permission.READ_EXTERNAL_STORAGE,
+                                Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                        .withListener(new MultiplePermissionsListener() {
+                            @Override
+                            public void onPermissionsChecked(MultiplePermissionsReport report) {
+                                if (report.areAllPermissionsGranted()) {
+                                    if(Count<5)
+                                    {
+                                        Count++;
+                                        Intent intent = CropImage.activity().setGuidelines(CropImageView.Guidelines.ON).getIntent(FillDetailsActivity.this);
+                                        startActivityForResult(intent, 3);
+                                    }else
+                                    {
+                                        Toast.makeText(FillDetailsActivity.this, "Maximum five certificate Upload.", Toast.LENGTH_SHORT).show();
+                                    }
+
+                                } else {
+                                    showSettingDialogue();
+                                }
+                            }
+
+                            @Override
+                            public void onPermissionRationaleShouldBeShown(List<PermissionRequest> permissions, PermissionToken token) {
+                                token.continuePermissionRequest();
+                            }
+                        }).check();
+            }
+        });
+
+        LL_add_imgage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Dexter.withActivity(FillDetailsActivity.this)
+                        .withPermissions(Manifest.permission.CAMERA,
+                                Manifest.permission.READ_EXTERNAL_STORAGE,
+                                Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                        .withListener(new MultiplePermissionsListener() {
+                            @Override
+                            public void onPermissionsChecked(MultiplePermissionsReport report) {
+                                if (report.areAllPermissionsGranted()) {
+                                    if(Count_img<5)
+                                    {
+                                        Count_img++;
+                                        Intent intent = CropImage.activity().setGuidelines(CropImageView.Guidelines.ON).getIntent(FillDetailsActivity.this);
+                                        startActivityForResult(intent, 4);
+                                    }else
+                                    {
+                                        Toast.makeText(FillDetailsActivity.this, "Maximum five certificate Upload.", Toast.LENGTH_SHORT).show();
+                                    }
+
+                                } else {
+                                    showSettingDialogue();
+                                }
+                            }
+
+                            @Override
+                            public void onPermissionRationaleShouldBeShown(List<PermissionRequest> permissions, PermissionToken token) {
+                                token.continuePermissionRequest();
+                            }
+                        }).check();
+            }
+        });
+
+        ll_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Dexter.withActivity(FillDetailsActivity.this)
+                        .withPermissions(Manifest.permission.CAMERA,
+                                Manifest.permission.READ_EXTERNAL_STORAGE,
+                                Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                        .withListener(new MultiplePermissionsListener() {
+                            @Override
+                            public void onPermissionsChecked(MultiplePermissionsReport report) {
+                                if (report.areAllPermissionsGranted()) {
+                                    if(Count_img<5)
+                                    {
+                                        Count_img++;
+                                        Intent intent = CropImage.activity().setGuidelines(CropImageView.Guidelines.ON).getIntent(FillDetailsActivity.this);
+                                        startActivityForResult(intent, 4);
+                                    }else
+                                    {
+                                        Toast.makeText(FillDetailsActivity.this, "Maximum five certificate Upload.", Toast.LENGTH_SHORT).show();
+                                    }
+
+                                } else {
+                                    showSettingDialogue();
+                                }
+                            }
+
+                            @Override
+                            public void onPermissionRationaleShouldBeShown(List<PermissionRequest> permissions, PermissionToken token) {
+                                token.continuePermissionRequest();
+                            }
+                        }).check();
+            }
+        });
+
+        spinnergender.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> parent, View arg1, int pos, long arg3){
+
+                Gender = code[pos];
+
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> arg0) {
+                // TODO Auto-generated method stub
+
+            }
+        });
     }
 
+
+
     private void findView() {
+
         sessionManager = new SessionManager(FillDetailsActivity.this);
 
+        img_one=findViewById(R.id.img_one);
+        img_two=findViewById(R.id.img_two);
+        img_three=findViewById(R.id.img_three);
+        img_four=findViewById(R.id.img_four);
+        img_five=findViewById(R.id.img_five);
+        img_certi_one=findViewById(R.id.img_certi_one);
+        img_certi_two=findViewById(R.id.img_certi_two);
+        img_certi_three=findViewById(R.id.img_certi_three);
+        img_certi_four=findViewById(R.id.img_certi_four);
+        img_certi_five=findViewById(R.id.img_certi_five);
+        ll_img_set=findViewById(R.id.ll_img_set);
+        ll_img_set_img=findViewById(R.id.ll_img_set_img);
+
+        LL_user_profile=findViewById(R.id.LL_user_profile);
+        ll_image=findViewById(R.id.ll_image);
+        txt_location=findViewById(R.id.txt_location);
         edt_about=findViewById(R.id.edt_about);
         edt_education=findViewById(R.id.edt_education);
         edt_language=findViewById(R.id.edt_language);
         edt_Affilations=findViewById(R.id.edt_Affilations);
         edt_Awards=findViewById(R.id.edt_Awards);
+        edt_certificate=findViewById(R.id.edt_certificate);
 
         img_one_certificate=findViewById(R.id.img_one_certificate);
         img_one_certificate_one=findViewById(R.id.img_one_certificate_one);
         LL_user_profile=findViewById(R.id.LL_user_profile);
         LL_add_certificate_two=findViewById(R.id.LL_add_certificate_two);
+        ll_certi=findViewById(R.id.ll_certi);
+        LL_add_imgage=findViewById(R.id.LL_add_imgage);
+        ll_img=findViewById(R.id.ll_img);
         img_userProfile=findViewById(R.id.img_userProfile);
         LL_calender=findViewById(R.id.LL_calender);
         txt_dob=findViewById(R.id.txt_dob);
@@ -285,6 +494,7 @@ public class FillDetailsActivity extends AppCompatActivity {
     }
 
 
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -296,7 +506,12 @@ public class FillDetailsActivity extends AppCompatActivity {
                     bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), resultUri);
                    // Glide.with(this).load(bitmap).circleCrop().into(img_userProfile);
                     UserProfile_img = FileUtil.from(this, resultUri);
-                    img_userProfile.setImageResource(R.drawable.check_one);
+                      ll_image.setVisibility(View.GONE);
+                      img_userProfile.setVisibility(View.VISIBLE);
+                   // img_userProfile.setImageBitmap(bitmap);
+
+                   Glide.with(this).load(bitmap).circleCrop().into(img_userProfile);
+
                     isProfileImage = true;
 
                 } catch (IOException e) {
@@ -327,10 +542,11 @@ public class FillDetailsActivity extends AppCompatActivity {
                 Uri resultUri = result.getUri();
                 try {
                     Bitmap bitmap = MediaStore.Images.Media.getBitmap(FillDetailsActivity.this.getContentResolver(), resultUri);
-                    // Glide.with(getContext()).load(bitmap).circleCrop().into(profileImageView);
+
                     imageFilePath_certificate = FileUtil.from(FillDetailsActivity.this, resultUri);
                    // img_two.setImageBitmap(bitmap);
-                    img_one_certificate.setImageResource(R.drawable.check_one);
+                //    img_one_certificate.setImageResource(R.drawable.check_one);
+                    Glide.with(this).load(bitmap).circleCrop().into(img_one_certificate);
                     isCertificate=true;
 
                 } catch (IOException e) {
@@ -361,11 +577,132 @@ public class FillDetailsActivity extends AppCompatActivity {
                 Uri resultUri = result.getUri();
                 try {
                     Bitmap bitmap = MediaStore.Images.Media.getBitmap(FillDetailsActivity.this.getContentResolver(), resultUri);
-                    // Glide.with(getContext()).load(bitmap).circleCrop().into(profileImageView);
-                    imageFilePath_certificate_one = FileUtil.from(FillDetailsActivity.this, resultUri);
+
+
                     // img_two.setImageBitmap(bitmap);
-                    img_one_certificate_one.setImageResource(R.drawable.check_one);
-                    isCertificate_one=true;
+                   // Glide.with(this).load(bitmap).circleCrop().into(img_one_certificate_one);
+              if(Count ==1)
+              {
+                  imageFilePath_certificate_one = FileUtil.from(FillDetailsActivity.this, resultUri);
+
+                  ll_img_set.setVisibility(View.VISIBLE);
+                  img_certi_one.setVisibility(View.VISIBLE);
+                  //Glide.with(this).load(bitmap).circleCrop().into(img_certi_one);
+                  img_certi_one.setImageBitmap(bitmap);
+                  isCertificate_one=true;
+
+              }else if(Count ==2)
+              {
+                  imageFilePath_certificate_two = FileUtil.from(FillDetailsActivity.this, resultUri);
+                  ll_img_set.setVisibility(View.VISIBLE);
+                  img_certi_two.setVisibility(View.VISIBLE);
+                  img_certi_two.setImageBitmap(bitmap);
+                 // Glide.with(this).load(bitmap).circleCrop().into(img_certi_two);
+
+              }else if(Count ==3)
+              {
+                  imageFilePath_certificate_three = FileUtil.from(FillDetailsActivity.this, resultUri);
+                  ll_img_set.setVisibility(View.VISIBLE);
+                  img_certi_three.setVisibility(View.VISIBLE);
+                  img_certi_three.setImageBitmap(bitmap);
+                  //Glide.with(this).load(bitmap).circleCrop().into(img_certi_three);
+
+              }else if(Count ==4)
+              {
+                  imageFilePath_certificate_four = FileUtil.from(FillDetailsActivity.this, resultUri);
+                  ll_img_set.setVisibility(View.VISIBLE);
+                  img_certi_four.setVisibility(View.VISIBLE);
+                  img_certi_four.setImageBitmap(bitmap);
+                 // Glide.with(this).load(bitmap).circleCrop().into(img_certi_four);
+
+              }else if(Count ==5)
+              {
+                  imageFilePath_certificate_five = FileUtil.from(FillDetailsActivity.this, resultUri);
+                  ll_img_set.setVisibility(View.VISIBLE);
+                  img_certi_five.setVisibility(View.VISIBLE);
+                  img_certi_five.setImageBitmap(bitmap);
+                //  Glide.with(this).load(bitmap).circleCrop().into(img_certi_five);
+              }
+
+                  //  img_one_certificate_one.setImageResource(R.drawable.check_one);
+
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                try {
+                    compressedImage_two_one = new Compressor(FillDetailsActivity.this)
+                            .setMaxWidth(640)
+                            .setMaxHeight(480)
+                            .setQuality(75)
+                            .setCompressFormat(Bitmap.CompressFormat.WEBP)
+                            .setDestinationDirectoryPath(Environment.getExternalStoragePublicDirectory(
+                                    Environment.DIRECTORY_PICTURES).getAbsolutePath())
+                            .compressToFile(imageFilePath_certificate_one);
+                    Log.e("ActivityTag", "imageFilePAth: " + compressedImage_two_one);
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    Toast.makeText(FillDetailsActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+
+            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+                Exception error = result.getError();
+            }
+        }else   if (requestCode == 4) {
+            if (resultCode == RESULT_OK) {
+                Uri resultUri = result.getUri();
+                try {
+                    Bitmap bitmap = MediaStore.Images.Media.getBitmap(FillDetailsActivity.this.getContentResolver(), resultUri);
+                    // img_two.setImageBitmap(bitmap);
+                   // Glide.with(this).load(bitmap).circleCrop().into(img_one_certificate_one);
+              if(Count_img ==1)
+              {
+                  imageFilePath_certificate_one = FileUtil.from(FillDetailsActivity.this, resultUri);
+
+                  ll_img_set_img.setVisibility(View.VISIBLE);
+                  ll_img_set.setVisibility(View.VISIBLE);
+                  img_one.setVisibility(View.VISIBLE);
+                  //Glide.with(this).load(bitmap).circleCrop().into(img_certi_one);
+                  img_one.setImageBitmap(bitmap);
+                  isCertificate_one=true;
+
+              }else if(Count_img ==2)
+              {
+                  imageFilePath_certificate_two = FileUtil.from(FillDetailsActivity.this, resultUri);
+                  ll_img_set_img.setVisibility(View.VISIBLE);
+                  img_two.setVisibility(View.VISIBLE);
+                  img_two.setImageBitmap(bitmap);
+                 // Glide.with(this).load(bitmap).circleCrop().into(img_certi_two);
+
+              }else if(Count_img ==3)
+              {
+                  imageFilePath_certificate_three = FileUtil.from(FillDetailsActivity.this, resultUri);
+                  ll_img_set_img.setVisibility(View.VISIBLE);
+                  img_three.setVisibility(View.VISIBLE);
+                  img_three.setImageBitmap(bitmap);
+                  //Glide.img_three(this).load(bitmap).circleCrop().into(img_certi_three);
+
+              }else if(Count_img ==4)
+              {
+                  imageFilePath_certificate_four = FileUtil.from(FillDetailsActivity.this, resultUri);
+                  ll_img_set_img.setVisibility(View.VISIBLE);
+                  img_four.setVisibility(View.VISIBLE);
+                  img_four.setImageBitmap(bitmap);
+                 // Glide.with(this).load(bitmap).circleCrop().into(img_certi_four);
+
+              }else if(Count_img ==5)
+              {
+                  imageFilePath_certificate_five = FileUtil.from(FillDetailsActivity.this, resultUri);
+                  ll_img_set_img.setVisibility(View.VISIBLE);
+                  img_five.setVisibility(View.VISIBLE);
+                  img_five.setImageBitmap(bitmap);
+                //  Glide.with(this).load(bitmap).circleCrop().into(img_certi_five);
+              }
+
+                  //  img_one_certificate_one.setImageResource(R.drawable.check_one);
+
 
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -396,7 +733,7 @@ public class FillDetailsActivity extends AppCompatActivity {
 
     public void locationInit(View view) {
 
-        BottomSheetFragment bottomSheetFragment= new BottomSheetFragment();
+        BottomSheetFragment bottomSheetFragment= new BottomSheetFragment(FillDetailsActivity.this );
         bottomSheetFragment.show(getSupportFragmentManager(),"ModalBottomSheet");
 
     }
@@ -407,24 +744,28 @@ public class FillDetailsActivity extends AppCompatActivity {
     }
 
     private void validation() {
-
         about = edt_about.getText().toString();
         education = edt_education.getText().toString();
         language = edt_language.getText().toString();
         Affilations = edt_language.getText().toString();
         Awards = edt_Awards.getText().toString();
+        certificate = edt_certificate.getText().toString();
 
-        if(isProfileImage)
+        if(isProfileImage == false)
         {
             Toast.makeText(this, "Please insert Profile Image", Toast.LENGTH_SHORT).show();
 
-        }if(about.equalsIgnoreCase(""))
+        }else if(about.equalsIgnoreCase(""))
         {
             Toast.makeText(this, "Please enter about.", Toast.LENGTH_SHORT).show();
 
         }else if(dob.equalsIgnoreCase(""))
         {
             Toast.makeText(this, "Please enter Dob.", Toast.LENGTH_SHORT).show();
+
+        }else if(LocationId.equalsIgnoreCase(""))
+        {
+            Toast.makeText(this, "Please add Location.", Toast.LENGTH_SHORT).show();
 
         }else if(education.equalsIgnoreCase(""))
         {
@@ -441,18 +782,22 @@ public class FillDetailsActivity extends AppCompatActivity {
         }else if(Awards.equalsIgnoreCase(""))
         {
             Toast.makeText(this, "Please enter Awards.", Toast.LENGTH_SHORT).show();
+
+        }else if(certificate.equalsIgnoreCase(""))
+        {
+            Toast.makeText(this, "Please enter Awards.", Toast.LENGTH_SHORT).show();
         }else
         {
             Intent intent=new Intent(this,YourLessonActivity.class);
             intent.putExtra("about",about);
-            intent.putExtra("location","15");
+            intent.putExtra("location",LocationId);
             intent.putExtra("dob",dob);
             intent.putExtra("education",education);
-            intent.putExtra("gender","Male");
+            intent.putExtra("gender",Gender);
             intent.putExtra("language",language);
             intent.putExtra("Affilations",Affilations);
             intent.putExtra("Awards",Awards);
-            intent.putExtra("certification","certification");
+            intent.putExtra("certification",certificate);
             startActivity(intent);
            // startActivity(new Intent(this,YourLessonActivity.class));
         }
@@ -460,19 +805,27 @@ public class FillDetailsActivity extends AppCompatActivity {
     }
 
     private String getAge(int year, int month, int day){
-
         Calendar dob = Calendar.getInstance();
         Calendar today = Calendar.getInstance();
 
         dob.set(year, month, day);
+
         int age = today.get(Calendar.YEAR) - dob.get(Calendar.YEAR);
+
         if (today.get(Calendar.DAY_OF_YEAR) < dob.get(Calendar.DAY_OF_YEAR)){
             age--;
         }
+
         Integer ageInt = new Integer(age);
         String ageS = ageInt.toString();
 
         return ageS;
     }
 
+    @Override
+    public void clickListen(String listenId) {
+        LocationId =  Preference.get(FillDetailsActivity.this,Preference.KEY_location_id);
+       String Address =   Preference.get(FillDetailsActivity.this,Preference.KEY_location_addreess);
+        txt_location.setText(Address);
+    }
 }

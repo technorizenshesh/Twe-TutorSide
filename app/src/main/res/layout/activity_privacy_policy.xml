@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.PrivacyPolicy"
+    >
+
+    <ProgressBar
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_centerInParent="true"
+        android:id="@+id/progressBar"
+        android:background="@drawable/progresh_background"
+        android:elevation="6dp"
+        android:padding="5dp"
+        android:indeterminate="true"
+        android:indeterminateTintMode="src_atop"
+        android:indeterminateTint="@color/colorPrimary"
+        android:visibility="gone"/>
+
+
+    <RelativeLayout
+        android:id="@+id/RR_toolbaar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_45sdp"
+        >
+
+        <RelativeLayout
+            android:id="@+id/RR_back"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:src="@drawable/back"
+                android:layout_centerInParent="true"
+                android:layout_width="@dimen/_15sdp"
+                android:layout_height="@dimen/_15sdp">
+
+            </ImageView>
+
+        </RelativeLayout>
+
+        <TextView
+            android:textStyle="bold"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Privacy Policy"
+            android:textSize="@dimen/_16sdp"
+            android:textColor="@color/colorBlack"
+            />
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/view"
+        android:background="@color/colorBlack"
+        android:layout_below="@+id/RR_toolbaar"
+        android:layout_width="wrap_content"
+        android:layout_height="0.3dp">
+
+    </View>
+
+    <ScrollView
+        android:layout_below="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/txt_privacy_policy"
+                android:padding="10sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Privacy Policy"
+                android:textSize="@dimen/_16sdp"
+                android:textColor="@color/colorBlack"
+                />
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

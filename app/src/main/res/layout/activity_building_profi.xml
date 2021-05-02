@@ -163,11 +163,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/preiview"
+                android:text="Preview a Profile"
                 android:layout_marginTop="@dimen/margin_15"
                 android:textColor="@color/colorBlack"
                 android:textSize="@dimen/textsize_15" />
-
 
 
             <TextView
@@ -179,16 +178,10 @@
                 android:text="we save progress between steps, so\nif you need to leave and come back,\nno problem."
                 android:textColor="@color/colorBlack"
                 android:textSize="@dimen/textsize_16"
-                android:textStyle="bold" />
-
-
-
-
-
-
+                android:textStyle="bold"
+                />
 
         </LinearLayout>
-
 
             <LinearLayout
                 android:layout_width="@dimen/margin_280"
@@ -243,7 +236,8 @@
                 android:layout_marginTop="@dimen/margin_5"
                 android:text="@string/txt_profi"
                 android:textColor="@color/colorBlack"
-                android:textSize="@dimen/textsize_15"/>
+                android:textSize="@dimen/textsize_15"
+                />
 
 
 

@@ -17,7 +17,7 @@ public class CategorySelectActivity extends AppCompatActivity implements Fragmen
 
     Context mContext;
 
-   private String teach_distance="";
+    private String teach_distance="";
     private String TimeZone="";
     private String where_to_teach="";
     private String about ="";

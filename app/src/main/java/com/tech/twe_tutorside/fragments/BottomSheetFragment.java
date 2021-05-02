@@ -1,13 +1,8 @@
 package com.tech.twe_tutorside.fragments;
 
 import android.app.Dialog;
-import android.content.Context;
 import android.content.Intent;
-import android.location.Location;
-import android.location.LocationManager;
 import android.os.Bundle;
-import android.view.KeyboardShortcutGroup;
-import android.view.Menu;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -22,21 +17,20 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.tech.twe_tutorside.GPSTracker;
 import com.tech.twe_tutorside.Preference;
 import com.tech.twe_tutorside.R;
-import com.tech.twe_tutorside.activity.FillDetailsActivity;
-import com.tech.twe_tutorside.activity.HomeActvity;
-import com.tech.twe_tutorside.activity.LoginActivity;
+import com.tech.twe_tutorside.SessionManager;
+import com.tech.twe_tutorside.activity.GooglePlacesAutocompleteActivity;
+import com.tech.twe_tutorside.activity.VerifyOtpActivity;
 import com.tech.twe_tutorside.adapter.GetAddress;
+import com.tech.twe_tutorside.listner.MyClickListner;
 import com.tech.twe_tutorside.model.getAddress;
 import com.tech.twe_tutorside.model.getShiipingAddressData;
 import com.tech.twe_tutorside.utils.RetrofitClients;
-import com.tech.twe_tutorside.utils.SessionManager;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Objects;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -50,17 +44,35 @@ public class BottomSheetFragment extends BottomSheetDialogFragment implements Vi
     private SessionManager sessionManager;
     private ProgressBar progressBar;
     private TextView txt_save;
+    private TextView txt_empty;
     private LinearLayout LL_Add_address;
     int increment = 4;
     GetAddress mAdapter;
+    MyClickListner listner;
+    private static final int REQUEST_CODE = 1353;
+
+    LinearLayout LL_save;
     private ArrayList<getShiipingAddressData> modelList=new ArrayList<>();
 
     private LinearLayout LL_CurrentLocation;
     GPSTracker gpsTracker;
+
+   public BottomSheetFragment(MyClickListner listner) {
+        this.listner = listner;
+    }
+
+    public BottomSheetFragment() {
+
+    }
+
+
+/*
+
     public static BottomSheetFragment newInstance() {
         BottomSheetFragment fragment = new BottomSheetFragment();
         return fragment;
     }
+*/
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -81,9 +93,12 @@ public class BottomSheetFragment extends BottomSheetDialogFragment implements Vi
         LL_CurrentLocation=contentView.findViewById(R.id.LL_CurrentLocation);
         txt_save=contentView.findViewById(R.id.txt_save);
         LL_Add_address=contentView.findViewById(R.id.LL_Add_address);
+        txt_empty=contentView.findViewById(R.id.txt_empty);
+        LL_save=contentView.findViewById(R.id.LL_save);
 
         bottomSheet_cancelId.setOnClickListener(this);
         LL_CurrentLocation.setOnClickListener(this);
+
         modelList.clear();
         if (sessionManager.isNetworkAvailable()) {
 
@@ -94,33 +109,23 @@ public class BottomSheetFragment extends BottomSheetDialogFragment implements Vi
         }else {
 
             Toast.makeText(getActivity(), R.string.checkInternet, Toast.LENGTH_SHORT).show();
+
         }
 
-        txt_save.setOnClickListener(new View.OnClickListener() {
+
+        LL_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                for(int i=0;i<modelList.size();i++)
-                {
-                    if(modelList.get(i).isSelected())
-                    {
-                        Preference.save(getActivity(), Preference.KEY_Address_id,modelList.get(i).getId());
+                listner.clickListen("harshit");
+                dismiss();
 
-                        Toast.makeText(getActivity(), modelList.get(i).getId(), Toast.LENGTH_SHORT).show();
-
-                        getActivity().onBackPressed();
-                        //getFragmentManager().popBackStack();
-                    }
-                    //modelList.get(i).isChecked();
-                }
             }
         });
 
         LL_Add_address.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
 
             }
         });
@@ -132,49 +137,25 @@ public class BottomSheetFragment extends BottomSheetDialogFragment implements Vi
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.bottomSheet_cancelId:
-                getFragmentManager().popBackStack();
-                //Objects.requireNonNull(getActivity()).onBackPressed();
+                dismiss();
                 break;
                 case R.id.LL_CurrentLocation:
-
-                    if (sessionManager.isNetworkAvailable()) {
-
-                        progressBar.setVisibility(View.VISIBLE);
-
-                        AddAddress();
-
-                    }else {
-
-                        Toast.makeText(getActivity(), R.string.checkInternet, Toast.LENGTH_SHORT).show();
-                    }
-
-                /*    gpsTracker = new GPSTracker(getActivity());
-                    if (gpsTracker.getIsGPSTrackingEnabled())
-                    {
-                        String stringLatitude = String.valueOf(gpsTracker.getLatitude());
-
-                        String stringLongitude = String.valueOf(gpsTracker.getLongitude());
-
-                        String country = gpsTracker.getCountryName(getActivity());
-
-                        String city = gpsTracker.getLocality(getActivity());
-
-                        String postalCode = gpsTracker.getPostalCode(getActivity());
-
-                        String addressLine = gpsTracker.getAddressLine(getActivity());
-
-                        Toast.makeText(getActivity(), ""+stringLatitude, Toast.LENGTH_SHORT).show();
-
-                    }
-                    else
-                    {
-                        // can't get location
-                        // GPS or Network is not enabled
-                        // Ask user to enable GPS/network in settings
-                        gpsTracker.showSettingsAlert();
-                    }*/
-                    //Toast.makeText(getActivity(), "Current Location Add", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getActivity(), GooglePlacesAutocompleteActivity.class);
+                    startActivityForResult(intent, REQUEST_CODE);
                 break;
+        }
+    }
+
+
+    @Override public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_CODE) {
+
+            if (sessionManager.isNetworkAvailable()) {
+                progressBar.setVisibility(View.VISIBLE);
+                getAddress();
+            }else {
+                Toast.makeText(getActivity(), R.string.checkInternet, Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
@@ -198,7 +179,9 @@ public class BottomSheetFragment extends BottomSheetDialogFragment implements Vi
             @Override
             public void onItemClick(View view, int position, getShiipingAddressData model) {
 
-              /*  Preference.save(getActivity(),Preference.KEY_product_id,model.getId());
+             //   dismiss();
+
+/*              Preference.save(getActivity(),Preference.KEY_product_id,model.getId());
                 listener.click(new ItemDetailsFragment(listener));*/
             }
         });
@@ -207,7 +190,8 @@ public class BottomSheetFragment extends BottomSheetDialogFragment implements Vi
 
     private void AddAddress() {
 
-        String UserId = sessionManager.getUserID();
+      //  String UserId = sessionManager.getUserID();
+        String UserId = "66";
 
         Call<ResponseBody> call = RetrofitClients
                 .getInstance()
@@ -258,8 +242,7 @@ public class BottomSheetFragment extends BottomSheetDialogFragment implements Vi
 
     private void getAddress() {
 
-       // String UserId = Preference.get(getActivity(), Preference.KEY_USER_ID);
-        String UserId = "3";
+       String UserId =  Preference.get(getActivity(), Preference.KEY_USER_ID);
 
         Call<getAddress> call = RetrofitClients
                 .getInstance()
@@ -269,6 +252,8 @@ public class BottomSheetFragment extends BottomSheetDialogFragment implements Vi
         call.enqueue(new Callback<getAddress>() {
             @Override
             public void onResponse(Call<getAddress> call, Response<getAddress> response) {
+
+                progressBar.setVisibility(View.GONE);
 
                 try {
 
@@ -282,9 +267,7 @@ public class BottomSheetFragment extends BottomSheetDialogFragment implements Vi
                     String Message= myProductList.getMessage().toString();
 
                     if (status.equalsIgnoreCase("1")) {
-
-                        progressBar.setVisibility(View.GONE);
-
+                        txt_empty.setVisibility(View.GONE);
                         modelList = (ArrayList<getShiipingAddressData>) myProductList.getResult();
 
                         setAdapter(modelList);
@@ -292,13 +275,13 @@ public class BottomSheetFragment extends BottomSheetDialogFragment implements Vi
                         // startActivity(new Intent(getActivity(), HomeActvity.class));
 
                     } else {
-
+                        txt_empty.setVisibility(View.VISIBLE);
                         Toast.makeText(getActivity(), Message, Toast.LENGTH_SHORT).show();
-                        progressBar.setVisibility(View.GONE);
                         Toast.makeText(getActivity(), Message, Toast.LENGTH_SHORT).show();
                     }
 
                 } catch (Exception e) {
+                    txt_empty.setVisibility(View.VISIBLE);
                     e.printStackTrace();
 
                 }
@@ -307,6 +290,7 @@ public class BottomSheetFragment extends BottomSheetDialogFragment implements Vi
             @Override
             public void onFailure(Call<getAddress> call, Throwable t) {
                 progressBar.setVisibility(View.GONE);
+                txt_empty.setVisibility(View.VISIBLE);
                 Toast.makeText(getActivity(), t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });

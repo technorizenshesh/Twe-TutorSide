@@ -6,6 +6,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -28,15 +29,15 @@ public class SplashActivity extends AppCompatActivity {
                     View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);}
         setContentView(R.layout.activity_splash);
 
-        User_id = Preference.get(SplashActivity.this, Preference.KEY_check_status);;
+        User_id = Preference.get(SplashActivity.this, Preference.KEY_check_status);
 
         handlerMethod();
+
     }
 
 
     private void handlerMethod() {
         Handler handler = new Handler();
-
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -47,15 +48,14 @@ public class SplashActivity extends AppCompatActivity {
                     startActivity(intent);
                     finish();
 
+                    Toast.makeText(SplashActivity.this, ""+User_id, Toast.LENGTH_SHORT).show();
+
                 }else
                 {
                     Intent intent=new Intent(SplashActivity.this, WelcomeActivity.class);
                     startActivity(intent);
                     finish();
                 }
-
-          /*      startActivity(new Intent(SplashActivity.this, WelcomeActivity.class));
-                finish();*/
             }
         }, SPLASH_TIME);
     }

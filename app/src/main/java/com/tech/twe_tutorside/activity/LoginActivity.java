@@ -1,12 +1,17 @@
+
 package com.tech.twe_tutorside.activity;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.text.TextUtils;
+import android.util.Base64;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
@@ -42,15 +47,19 @@ import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.messaging.FirebaseMessaging;
+import com.tech.twe_tutorside.GPSTracker;
 import com.tech.twe_tutorside.Preference;
 import com.tech.twe_tutorside.R;
 import com.tech.twe_tutorside.utils.RetrofitClients;
 import com.tech.twe_tutorside.utils.SessionManager;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -64,7 +73,6 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     private EditText edt_password;
     private LinearLayout LL_submit;
     private TextView tv_forgot_password;
-
     String email="";
     String password="";
 
@@ -90,6 +98,10 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     CallbackManager mCallbackManager;
     LoginButton loginButton;
 
+    GPSTracker gpsTracker;
+    String latitude="";
+    String longitude="";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -102,9 +114,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
 
         //android device Id
         android_id = Settings.Secure.getString(this.getContentResolver(), Settings.Secure.ANDROID_ID);
-
         setUi();
-
 
         //FirebaseToke
         FirebaseMessaging.getInstance().getToken()
@@ -128,6 +138,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
 
                 Intent intent = Auth.GoogleSignInApi.getSignInIntent(googleApiClient);
                 startActivityForResult(intent, RC_SIGN_IN);
+
             }
         });
 
@@ -146,6 +157,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             public void onClick(View v) {
 
                 loginButton.performClick();
+
             }
         });
 
@@ -184,6 +196,18 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 // ...
             }
         });
+
+
+        //Gps Lat Long
+        gpsTracker=new GPSTracker(this);
+        if(gpsTracker.canGetLocation()){
+            latitude = String.valueOf(gpsTracker.getLatitude());
+            longitude = String.valueOf(gpsTracker.getLongitude());
+        }else{
+            gpsTracker.showSettingsAlert();
+        }
+
+
     }
 
     //Google Login
@@ -233,8 +257,8 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                             }else {
 
                                 Toast.makeText(LoginActivity.this, R.string.checkInternet, Toast.LENGTH_SHORT).show();
-                            }
 
+                            }
 
                         } else {
 
@@ -301,8 +325,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     }
 
     public void loginInit(View view) {
-
-      validation();
+           validation();
      //  startActivity(new Intent(LoginActivity.this, HomeActvity.class));
     }
 
@@ -344,12 +367,12 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
 
 
 
-    private void loginMethod() {
+    private void loginMethod(){
 
         Call<ResponseBody> call = RetrofitClients
                 .getInstance()
                 .getApi()
-                .login(email,password,"Tutor","25.00","25.00",android_id);
+                .login(email,password,"Tutor",latitude,longitude,token);
 
         call.enqueue(new Callback<ResponseBody>() {
             @Override
@@ -363,7 +386,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                     JSONObject jsonObject = new JSONObject(response.body().string());
                     String status   = jsonObject.getString ("status");
                     String message = jsonObject.getString("message");
-
+                    result = jsonObject.getString("result");
                     JSONObject resultOne = jsonObject.getJSONObject("result");
 
                     String check_status = resultOne.getString("check_status");
@@ -378,6 +401,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                         Preference.save(LoginActivity.this, Preference.KEY_check_status,check_status);
                         Preference.save(LoginActivity.this, Preference.KEY_USER_ID,UserId);
                         Preference.save(LoginActivity.this, Preference.KEY_username,username);
+                        Preference.save(LoginActivity.this, Preference.KEY_Profile_image,image);
                         Toast.makeText(LoginActivity.this, message, Toast.LENGTH_SHORT).show();
 
                         if(check_status.equalsIgnoreCase("1"))
@@ -391,16 +415,17 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                         }
 
                     } else {
-                        Toast.makeText(LoginActivity.this, message, Toast.LENGTH_SHORT).show();
                         progressBar.setVisibility(View.GONE);
                         LL_submit.setEnabled(true);
                         Toast.makeText(LoginActivity.this, message, Toast.LENGTH_SHORT).show();
                     }
 
                 } catch (JSONException e) {
+                    Toast.makeText(LoginActivity.this, result, Toast.LENGTH_SHORT).show();
                     e.printStackTrace();
 
                 } catch (IOException e) {
+                    Toast.makeText(LoginActivity.this, result, Toast.LENGTH_SHORT).show();
                     e.printStackTrace();
                 }
             }
@@ -419,7 +444,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         Call<ResponseBody> call = RetrofitClients
                 .getInstance()
                 .getApi()
-                .Social_login(UserName,email,Mobile,"Student","25.00","25.00",SocialId,token);
+                .Social_login(UserName,email,Mobile,"Tutor",latitude,longitude,SocialId,token);
 
         call.enqueue(new Callback<ResponseBody>() {
             @Override
@@ -432,25 +457,31 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                     String message = jsonObject.getString("message");
 
                     result = jsonObject.getString("result");
-
                     JSONObject resultOne = jsonObject.getJSONObject("result");
 
+                    String check_status = resultOne.getString("check_status");
+                    String username = resultOne.getString("username");
                     String UserId = resultOne.getString("id");
 
                     if (status.equalsIgnoreCase("1")) {
 
                         Preference.save(LoginActivity.this,Preference.KEYType_login,"social_login");
-
                         sessionManager.saveUserId(UserId);
+                        Preference.save(LoginActivity.this, Preference.KEY_check_status,check_status);
+                        Preference.save(LoginActivity.this, Preference.KEY_USER_ID,UserId);
+                        Preference.save(LoginActivity.this, Preference.KEY_username,username);
 
                         Toast.makeText(LoginActivity.this, message, Toast.LENGTH_SHORT).show();
 
+                        if(check_status.equalsIgnoreCase("1"))
+                        {
+                            startActivity(new Intent(LoginActivity.this, HomeActvity.class));
 
-                       // Intent intent = new Intent(LoginActivity.this, HomeActvity.class);
-                        Intent intent = new Intent(LoginActivity.this, BuildingProfiActivity.class);
-                        startActivity(intent);
-                        finish();
+                        }else
+                        {
+                            startActivity(new Intent(LoginActivity.this, BuildingProfiActivity.class));
 
+                        }
 
                     } else {
                         Toast.makeText(LoginActivity.this, result, Toast.LENGTH_SHORT).show();

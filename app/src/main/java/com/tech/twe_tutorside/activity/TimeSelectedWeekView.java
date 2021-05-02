@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.tech.twe_tutorside.Preference;
@@ -22,6 +23,7 @@ import com.tech.twe_tutorside.model.getAddress;
 import com.tech.twe_tutorside.utils.RetrofitClients;
 import com.tech.twe_tutorside.utils.SessionManager;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -78,13 +80,20 @@ public class TimeSelectedWeekView extends AppCompatActivity {
 
 
     //Array List week View selected
-    private ArrayList<String> monday = new ArrayList<>();
-    private ArrayList<String> tuesday = new ArrayList<>();
-    private ArrayList<String> wednesday = new ArrayList<>();
-    private ArrayList<String> thursday = new ArrayList<>();
-    private ArrayList<String> friday = new ArrayList<>();
-    private ArrayList<String> saturday = new ArrayList<>();
-    private ArrayList<String> sunday = new ArrayList<>();
+    //  public static ArrayList<String> monday = new ArrayList<>();
+    public static JSONArray monday = new JSONArray();
+    //  public static ArrayList<String> tuesday = new ArrayList<>();
+    public static JSONArray tuesday = new JSONArray();
+    //  public static ArrayList<String> wednesday = new ArrayList<>();
+    public static JSONArray wednesday = new JSONArray();
+    //   public static ArrayList<String> thursday = new ArrayList<>();
+    public static JSONArray thursday = new JSONArray();
+    //  public static ArrayList<String> friday = new ArrayList<>();
+    public static JSONArray friday = new JSONArray();
+    // public static ArrayList<String> saturday = new ArrayList<>();
+    public static JSONArray saturday = new JSONArray();
+    //public static ArrayList<String> sunday = new ArrayList<>();
+    public static JSONArray sunday = new JSONArray();
 
     String teach_distance="";
     String TimeZone="";
@@ -99,13 +108,16 @@ public class TimeSelectedWeekView extends AppCompatActivity {
     String gender ="";
     String certification ="";
 
+    TextView txt_empty;
+    TextView txt_name;
+    LinearLayout ll_timeSlot;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_time_selected_week_view);
 
         Intent intent=getIntent();
-
         if(intent !=null)
         {
             about=intent.getStringExtra("about").toString();
@@ -124,15 +136,7 @@ public class TimeSelectedWeekView extends AppCompatActivity {
             TimeZone=intent.getStringExtra("TimeZone").toString();
         }
 
-
-        recycler_available_slot_moday=findViewById(R.id.recycler_available_slot_moday);
-        recycler_available_slot_tuesday=findViewById(R.id.recycler_available_slot_tuesday);
-        recycler_available_slot_wednesDay=findViewById(R.id.recycler_available_slot_wednesDay);
-        recycler_available_slot_thursday=findViewById(R.id.recycler_available_slot_thursday);
-        recycler_available_slot_friday=findViewById(R.id.recycler_available_slot_friday);
-        recycler_available_slot_saturday=findViewById(R.id.recycler_available_slot_saturday);
-        recycler_available_slot_sunday=findViewById(R.id.recycler_available_slot_sunday);
-        LL_next=findViewById(R.id.LL_next);
+                find();
 
         progressBar=findViewById(R.id.progressBar);
         sessionManager = new SessionManager(TimeSelectedWeekView.this);
@@ -155,7 +159,7 @@ public class TimeSelectedWeekView extends AppCompatActivity {
                 {
                     if(modelListTime_monday_new.get(i).isSelected())
                     {
-                        monday.add(modelListTime_monday_new.get(i).getName());
+                        monday.put(modelListTime_monday_new.get(i).getName());
                     }
                 }
 
@@ -163,7 +167,7 @@ public class TimeSelectedWeekView extends AppCompatActivity {
                 {
                     if(modelListTime_tuesday_new.get(i).isSelected())
                     {
-                        thursday.add(modelListTime_tuesday_new.get(i).getName());
+                        tuesday.put(modelListTime_tuesday_new.get(i).getName());
                     }
                 }
 
@@ -171,7 +175,7 @@ public class TimeSelectedWeekView extends AppCompatActivity {
                 {
                     if(modelListTime_wednesDay_new.get(i).isSelected())
                     {
-                        wednesday.add(modelListTime_wednesDay_new.get(i).getName());
+                        wednesday.put(modelListTime_wednesDay_new.get(i).getName());
                     }
                 }
 
@@ -179,7 +183,7 @@ public class TimeSelectedWeekView extends AppCompatActivity {
                 {
                     if(modelListTime_thursday_new.get(i).isSelected())
                     {
-                        thursday.add(modelListTime_thursday_new.get(i).getName());
+                        thursday.put(modelListTime_thursday_new.get(i).getName());
                     }
                 }
 
@@ -187,7 +191,7 @@ public class TimeSelectedWeekView extends AppCompatActivity {
                 {
                     if(modelListTime_friday_new.get(i).isSelected())
                     {
-                        friday.add(modelListTime_friday_new.get(i).getName());
+                        friday.put(modelListTime_friday_new.get(i).getName());
                     }
                 }
 
@@ -195,7 +199,7 @@ public class TimeSelectedWeekView extends AppCompatActivity {
                 {
                     if(modelListTime_saturday_new.get(i).isSelected())
                     {
-                        saturday.add(modelListTime_saturday_new.get(i).getName());
+                        saturday.put(modelListTime_saturday_new.get(i).getName());
                     }
                 }
 
@@ -203,17 +207,18 @@ public class TimeSelectedWeekView extends AppCompatActivity {
                 {
                     if(modelListTime_sunday_new.get(i).isSelected())
                     {
-                        sunday.add(modelListTime_sunday_new.get(i).getName());
+                        sunday.put(modelListTime_sunday_new.get(i).getName());
                     }
                 }
 
-                Log.d("mondayTime :",""+monday);
-                Log.d("tuesday :",""+tuesday);
-                Log.d("wednesday :",""+wednesday);
-                Log.d("thursday :",""+thursday);
-                Log.d("friday :",""+friday);
-                Log.d("saturday :",""+saturday);
-                Log.d("sunday :",""+sunday);
+                Log.d("mondayTime :","mondayTime ="+monday);
+                Log.d("tuesday :","tuesday ="+tuesday);
+                Log.d("wednesday :","wednesday "+wednesday);
+                Log.d("thursday :","thursday "+thursday);
+                Log.d("friday :","friday "+friday);
+                Log.d("saturday :","saturday "+saturday);
+                Log.d("sunday :","sunday"+sunday);
+
 
                 Intent intent=new Intent(TimeSelectedWeekView.this,CategorySelectActivity.class);
                 intent.putExtra("about",about);
@@ -238,12 +243,25 @@ public class TimeSelectedWeekView extends AppCompatActivity {
                 intent.putExtra("sunday",""+sunday);
                 startActivity(intent);
 
-               //startActivity(new Intent(TimeSelectedWeekView.this,CategorySelectActivity.class));
 
             }
         });
 
 
+    }
+
+    private void find() {
+        recycler_available_slot_moday=findViewById(R.id.recycler_available_slot_moday);
+        recycler_available_slot_tuesday=findViewById(R.id.recycler_available_slot_tuesday);
+        recycler_available_slot_wednesDay=findViewById(R.id.recycler_available_slot_wednesDay);
+        recycler_available_slot_thursday=findViewById(R.id.recycler_available_slot_thursday);
+        recycler_available_slot_friday=findViewById(R.id.recycler_available_slot_friday);
+        recycler_available_slot_saturday=findViewById(R.id.recycler_available_slot_saturday);
+        recycler_available_slot_sunday=findViewById(R.id.recycler_available_slot_sunday);
+        LL_next=findViewById(R.id.LL_next);
+        ll_timeSlot=findViewById(R.id.ll_timeSlot);
+        txt_empty=findViewById(R.id.txt_empty);
+        txt_name=findViewById(R.id.txt_name);
     }
 
     /*private void setAdapter(ArrayList<String> modelListTime ,AvailableSlot mAdapter,RecyclerView recycler_available_slot) {
@@ -277,7 +295,7 @@ public class TimeSelectedWeekView extends AppCompatActivity {
             @Override
             public void onItemClick(View view, int position, SaloonSpecialistModel model) {
 
-              //  Toast.makeText(TimeSelectedWeekView.this, ""+position, Toast.LENGTH_SHORT).show();
+                //  Toast.makeText(TimeSelectedWeekView.this, ""+position, Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -285,6 +303,7 @@ public class TimeSelectedWeekView extends AppCompatActivity {
     private void getTimeSlotApi() {
 
         String UserId  = Preference.get(TimeSelectedWeekView.this,Preference.KEY_USER_ID);
+      //  String UserId  = UserId;
 
         Call<TimeSlotModel> call = RetrofitClients
                 .getInstance()
@@ -304,10 +323,15 @@ public class TimeSelectedWeekView extends AppCompatActivity {
 
                     if (status.equalsIgnoreCase("1")) {
 
+
                         progressBar.setVisibility(View.GONE);
 
-                        if(myTimeSlot.getResult() != null)
+                        if(myTimeSlot.getResult() != null && myTimeSlot.getResult().size() != 0)
                         {
+                            ll_timeSlot.setVisibility(View.VISIBLE);
+                            txt_empty.setVisibility(View.GONE);
+                            txt_name.setVisibility(View.VISIBLE);
+
                             // Monday Time Set
                             modelListTime_monday = (ArrayList<String>) myTimeSlot.getResult();
                             for(int i= 0;i<modelListTime_monday.size();i++)
@@ -364,8 +388,13 @@ public class TimeSelectedWeekView extends AppCompatActivity {
                                 modelListTime_sunday_new.add(new SaloonSpecialistModel(modelListTime_sunday.get(i)));
                             }
                             setAdapter(modelListTime_sunday_new,mAdapter_sunday,recycler_available_slot_sunday);
-                        }
+                        }else
+                        {
+                            ll_timeSlot.setVisibility(View.GONE);
+                            txt_name.setVisibility(View.GONE);
+                            txt_empty.setVisibility(View.VISIBLE);
 
+                        }
 
                     } else {
 

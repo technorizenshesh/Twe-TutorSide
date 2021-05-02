@@ -22,8 +22,6 @@
         android:indeterminateTint="@color/colorPrimary"
         android:visibility="gone"/>
 
-
-
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -72,6 +70,7 @@
 
 
                     <TextView
+                        android:id="@+id/txt_time_Zone"
                         android:layout_width="@dimen/margin_200"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
@@ -313,7 +312,6 @@
                         android:layout_gravity="center"
                         android:background="@drawable/edit_background"
                         >
-
 
                         <TextView
                             android:id="@+id/txt_closeTime"

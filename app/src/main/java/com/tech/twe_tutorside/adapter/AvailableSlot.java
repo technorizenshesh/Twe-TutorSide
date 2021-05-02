@@ -28,8 +28,6 @@ public class AvailableSlot extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     private ArrayList<SaloonSpecialistModel> modelList;
     private OnItemClickListener mItemClickListener;
 
-
-
     public AvailableSlot(Context context, ArrayList<SaloonSpecialistModel> modelList) {
         this.mContext = context;
         this.modelList = modelList;

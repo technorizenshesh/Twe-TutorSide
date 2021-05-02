@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.cardview.widget.CardView;
@@ -15,6 +16,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.tech.twe_tutorside.Preference;
 import com.tech.twe_tutorside.R;
 import com.tech.twe_tutorside.model.getShiipingAddressData;
 import com.tech.twe_tutorside.utils.SessionManager;
@@ -39,7 +41,7 @@ public class GetAddress extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private static CheckBox lastChecked = null;
     private static int lastCheckedPos = 0;
-
+    int lastPosition =0;
     public GetAddress(Context context, ArrayList<getShiipingAddressData> modelList) {
         this.mContext = context;
         this.modelList = modelList;
@@ -69,41 +71,35 @@ public class GetAddress extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
            // String image_URL = model.getImage().toString();
        //   genericViewHolder.txt_city.setText(model.getState()+","+model.getCountry());
           // genericViewHolder.txt_address.setText(model.getStreetOne()+","+model.getStreetwo()+""+model.getCity());
-          // genericViewHolder.txt_address_type.setText(model.getStreetOne()+","+model.getStreetwo()+""+model.getCity());
 
-            genericViewHolder.checkBox.setTag(new Integer(position));
-            //for default check in first item
-            if(position == 0 &&  modelList.get(0).isSelected() && genericViewHolder.checkBox.isChecked())
-            {
-                lastChecked = genericViewHolder.checkBox;
-                lastCheckedPos = 0;
-            }
+           genericViewHolder.txt_address.setText(model.getAddress());
 
-            genericViewHolder.checkBox.setOnClickListener(new View.OnClickListener()
+            genericViewHolder.RR_select.setOnClickListener(new View.OnClickListener()
             {
                 @Override
                 public void onClick(View v)
                 {
-                    //CheckBox cb = (CheckBox)v;
-                    int clickedPos = ((Integer)genericViewHolder.checkBox.getTag()).intValue();
+                    Preference.save(mContext,Preference.KEY_location_id,model.getId());
 
-                    if(genericViewHolder.checkBox.isChecked())
-                    {
-                        if(lastChecked != null)
-                        {
-                            lastChecked.setChecked(false);
-                            modelList.get(lastCheckedPos).setSelected(false);
-                        }
+                    Preference.save(mContext,Preference.KEY_location_addreess,model.getAddress());
 
-                        lastChecked = genericViewHolder.checkBox;
-                        lastCheckedPos = clickedPos;
-                    }
-                    else
-                        lastChecked = null;
-
-                    modelList.get(clickedPos).setSelected(genericViewHolder.checkBox.isChecked());
+                    lastPosition = position;
+                    notifyDataSetChanged();
                 }
             });
+
+            if(lastPosition == position)
+            {
+                Preference.save(mContext,Preference.KEY_location_addreess,model.getAddress());
+
+                Preference.save(mContext,Preference.KEY_location_id,model.getId());
+
+                genericViewHolder.checkBox.setChecked(true);
+
+            }else
+            {
+                genericViewHolder.checkBox.setChecked(false);
+            }
 
         }
     }

@@ -20,6 +20,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.tech.twe_tutorside.Preference;
 import com.tech.twe_tutorside.R;
 import com.tech.twe_tutorside.fragments.HomeFragment;
+import com.tech.twe_tutorside.fragments.MessageFragment;
 import com.tech.twe_tutorside.fragments.MyProfileFragment;
 import com.tech.twe_tutorside.fragments.NotificationFragment;
 import com.tech.twe_tutorside.listner.FragmentListener;
@@ -37,8 +38,6 @@ public class HomeActvity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_home_actvity);
-
-
 
         navigationView = findViewById(R.id.bottom_navigation);
         navigationView.setOnNavigationItemSelectedListener(this);
@@ -70,7 +69,8 @@ public class HomeActvity extends AppCompatActivity
 
             case R.id.chat:
                 setColorOnBar(R.color.colorBackground);
-                startActivity(new Intent(HomeActvity.this,ChatActivity.class));
+                loadFragment(new MessageFragment(this));
+               // startActivity(new Intent(HomeActvity.this,ChatActivity.class));
                 break;
 
             case R.id.account:

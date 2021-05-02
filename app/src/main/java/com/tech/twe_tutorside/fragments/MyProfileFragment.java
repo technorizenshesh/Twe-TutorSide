@@ -17,10 +17,13 @@ import com.tech.twe_tutorside.Preference;
 import com.tech.twe_tutorside.R;
 import com.tech.twe_tutorside.activity.Activity_LoginOption;
 import com.tech.twe_tutorside.activity.AttendanceActivity;
+import com.tech.twe_tutorside.activity.ContactUsActivity;
 import com.tech.twe_tutorside.activity.HomeActvity;
 import com.tech.twe_tutorside.activity.LoginActivity;
 import com.tech.twe_tutorside.activity.MyHistoryActivity;
 import com.tech.twe_tutorside.activity.PaymentStatementActivity;
+import com.tech.twe_tutorside.activity.PrivacyPolicy;
+import com.tech.twe_tutorside.activity.TermsCondition;
 import com.tech.twe_tutorside.listner.FragmentListener;
 import com.tech.twe_tutorside.utils.SessionManager;
 
@@ -28,7 +31,7 @@ import com.tech.twe_tutorside.utils.SessionManager;
 public class MyProfileFragment extends Fragment implements View.OnClickListener {
 
 
-    LinearLayout myHistoryId,payment_statementId,notifi_Id,my_attendanceId,myrequestHistoryId,ll_profile;
+    LinearLayout myHistoryId,payment_statementId,notifi_Id,my_attendanceId,myrequestHistoryId,ll_profile,ll_terms_condition,ll_privacy_policy,ll_ContactUs;
     TextView txt_myHistoryId,payment_txtId,notifi_txtId,Txtmy_attendanceId,txt_myrequestHistoryId,txt_logout;
     ImageView iv_back;
     FirebaseAuth mAuth;
@@ -63,6 +66,7 @@ public class MyProfileFragment extends Fragment implements View.OnClickListener 
         txt_myHistoryId=view.findViewById(R.id.txt_myHistoryId);
         txt_myHistoryId.setOnClickListener(this);
         iv_back=view.findViewById(R.id.iv_back);
+        ll_ContactUs=view.findViewById(R.id.ll_ContactUs);
         iv_back.setOnClickListener(this);
 
         sessionManager = new SessionManager(getActivity());
@@ -94,8 +98,33 @@ public class MyProfileFragment extends Fragment implements View.OnClickListener 
         txt_myrequestHistoryId.setOnClickListener(this);
 
         txt_logout=view.findViewById(R.id.txt_logout);
+        ll_privacy_policy=view.findViewById(R.id.ll_privacy_policy);
+        ll_terms_condition=view.findViewById(R.id.ll_terms_condition);
         txt_logout.setOnClickListener(this);
 
+        ll_privacy_policy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                startActivity(new Intent(getActivity(), PrivacyPolicy.class));
+            }
+        });
+
+        ll_terms_condition.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                startActivity(new Intent(getActivity(), TermsCondition.class));
+            }
+        });
+
+        ll_ContactUs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                startActivity(new Intent(getActivity(), ContactUsActivity.class));
+            }
+        });
 
 
         return view;
@@ -110,26 +139,21 @@ public class MyProfileFragment extends Fragment implements View.OnClickListener 
                 listener.click(new RequestHistoryFragment(listener));
                 break;
 
-
-                    case R.id.txt_myHistoryId:
-                        listener.click(new RequestHistoryFragment(listener));
-                        break;
-
+            case R.id.txt_myHistoryId:
+                listener.click(new RequestHistoryFragment(listener));
+                break;
 
             case R.id.my_attendanceId:
                 startActivity(new Intent(getActivity(), AttendanceActivity.class));
                 break;
 
-
             case R.id.Txtmy_attendanceId:
                 startActivity(new Intent(getActivity(), AttendanceActivity.class));
                 break;
 
-
             case R.id.payment_statementId:
                 startActivity(new Intent(getActivity(), PaymentStatementActivity.class));
                 break;
-
 
             case R.id.payment_txtId:
                 startActivity(new Intent(getActivity(), PaymentStatementActivity.class));
@@ -140,12 +164,10 @@ public class MyProfileFragment extends Fragment implements View.OnClickListener 
                 listener.click(new NotificationFragment(listener));
                 break;
 
-
             case R.id.notifi_txtId:
                 listener.click(new NotificationFragment(listener));
-               // startActivity(new Intent(getActivity(), PaymentStatementActivity.class));
+                // startActivity(new Intent(getActivity(), PaymentStatementActivity.class));
                 break;
-
 
             case R.id.iv_back:
                 listener.click(new HomeFragment(listener));
@@ -159,23 +181,23 @@ public class MyProfileFragment extends Fragment implements View.OnClickListener 
                 listener.click(new RequestFragment(listener));
                 break;
 
-                case R.id.txt_logout:
-                   String UserType = Preference.get(getActivity(),Preference.KEYType_login);
-                    if(UserType.equalsIgnoreCase("social_login"))
-                    {
-                        sessionManager.logoutUser();
-                        Preference.clearPreference(getActivity());
-                        mAuth.getInstance().signOut();
-                        LoginManager.getInstance().logOut();
-                        startActivity(new Intent(getActivity(), LoginActivity.class));
-                    }else
-                    {
-                        sessionManager.logoutUser();
-                        Preference.clearPreference(getActivity());
-                        startActivity(new Intent(getActivity(), LoginActivity.class));
-                    }
-                    case R.id.ll_profile:
-                        listener.click(new AccountDetails(listener));
+            case R.id.txt_logout:
+                String UserType = Preference.get(getActivity(),Preference.KEYType_login);
+                if(UserType.equalsIgnoreCase("social_login"))
+                {
+                    sessionManager.logoutUser();
+                    Preference.clearPreference(getActivity());
+                    mAuth.getInstance().signOut();
+                    LoginManager.getInstance().logOut();
+                    startActivity(new Intent(getActivity(), LoginActivity.class));
+                }else
+                {
+                    sessionManager.logoutUser();
+                    Preference.clearPreference(getActivity());
+                    startActivity(new Intent(getActivity(), LoginActivity.class));
+                }
+            case R.id.ll_profile:
+                listener.click(new AccountDetails(listener));
                 break;
 
         }

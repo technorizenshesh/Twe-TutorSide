@@ -22,6 +22,15 @@ public class UserDetails_model {
     @SerializedName("dob")
     @Expose
     private String dob;
+    @SerializedName("tutorcategory")
+    @Expose
+    private String tutorcategory;
+    @SerializedName("tutorsubcategory")
+    @Expose
+    private String tutorsubcategory;
+    @SerializedName("tutorsubject")
+    @Expose
+    private String tutorsubject;
     @SerializedName("education")
     @Expose
     private String education;
@@ -52,6 +61,15 @@ public class UserDetails_model {
     @SerializedName("teach_distance")
     @Expose
     private String teachDistance;
+    @SerializedName("start_time")
+    @Expose
+    private String startTime;
+    @SerializedName("end_time")
+    @Expose
+    private String endTime;
+    @SerializedName("time_slot")
+    @Expose
+    private String timeSlot;
     @SerializedName("time_zone")
     @Expose
     private String timeZone;
@@ -76,6 +94,21 @@ public class UserDetails_model {
     @SerializedName("sunday")
     @Expose
     private String sunday;
+    @SerializedName("per_hour_payment")
+    @Expose
+    private String perHourPayment;
+    @SerializedName("full_course_time")
+    @Expose
+    private String fullCourseTime;
+    @SerializedName("per_hour_payment_group")
+    @Expose
+    private String perHourPaymentGroup;
+    @SerializedName("full_course_time_group")
+    @Expose
+    private String fullCourseTimeGroup;
+    @SerializedName("check_status")
+    @Expose
+    private String checkStatus;
     @SerializedName("date_time")
     @Expose
     private String dateTime;
@@ -126,6 +159,30 @@ public class UserDetails_model {
 
     public void setDob(String dob) {
         this.dob = dob;
+    }
+
+    public String getTutorcategory() {
+        return tutorcategory;
+    }
+
+    public void setTutorcategory(String tutorcategory) {
+        this.tutorcategory = tutorcategory;
+    }
+
+    public String getTutorsubcategory() {
+        return tutorsubcategory;
+    }
+
+    public void setTutorsubcategory(String tutorsubcategory) {
+        this.tutorsubcategory = tutorsubcategory;
+    }
+
+    public String getTutorsubject() {
+        return tutorsubject;
+    }
+
+    public void setTutorsubject(String tutorsubject) {
+        this.tutorsubject = tutorsubject;
     }
 
     public String getEducation() {
@@ -208,6 +265,30 @@ public class UserDetails_model {
         this.teachDistance = teachDistance;
     }
 
+    public String getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
+    }
+
+    public String getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
+    }
+
+    public String getTimeSlot() {
+        return timeSlot;
+    }
+
+    public void setTimeSlot(String timeSlot) {
+        this.timeSlot = timeSlot;
+    }
+
     public String getTimeZone() {
         return timeZone;
     }
@@ -272,6 +353,46 @@ public class UserDetails_model {
         this.sunday = sunday;
     }
 
+    public String getPerHourPayment() {
+        return perHourPayment;
+    }
+
+    public void setPerHourPayment(String perHourPayment) {
+        this.perHourPayment = perHourPayment;
+    }
+
+    public String getFullCourseTime() {
+        return fullCourseTime;
+    }
+
+    public void setFullCourseTime(String fullCourseTime) {
+        this.fullCourseTime = fullCourseTime;
+    }
+
+    public String getPerHourPaymentGroup() {
+        return perHourPaymentGroup;
+    }
+
+    public void setPerHourPaymentGroup(String perHourPaymentGroup) {
+        this.perHourPaymentGroup = perHourPaymentGroup;
+    }
+
+    public String getFullCourseTimeGroup() {
+        return fullCourseTimeGroup;
+    }
+
+    public void setFullCourseTimeGroup(String fullCourseTimeGroup) {
+        this.fullCourseTimeGroup = fullCourseTimeGroup;
+    }
+
+    public String getCheckStatus() {
+        return checkStatus;
+    }
+
+    public void setCheckStatus(String checkStatus) {
+        this.checkStatus = checkStatus;
+    }
+
     public String getDateTime() {
         return dateTime;
     }
@@ -279,5 +400,4 @@ public class UserDetails_model {
     public void setDateTime(String dateTime) {
         this.dateTime = dateTime;
     }
-
 }

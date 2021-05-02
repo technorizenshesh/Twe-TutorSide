@@ -3,9 +3,14 @@ package com.tech.twe_tutorside.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,12 +19,16 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.tech.twe_tutorside.R;
+
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 
 public class WelcomeActivity extends AppCompatActivity implements View.OnClickListener{
@@ -33,12 +42,11 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
     private TextView tvSignIn, tvSkip;
 
     Boolean [] checkBoxState;
-
+    private static final String TAG = "fireBaseToken";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         // Checking for first time launch - before calling setContentView()
@@ -56,6 +64,24 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
         }
 
         setContentView(R.layout.activity_welcome);
+
+
+        try {
+            PackageInfo info = this.getPackageManager().getPackageInfo(this.getPackageName(), PackageManager.GET_SIGNATURES);
+            for (Signature signature : info.signatures) {
+                MessageDigest md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+                String hashKey = new String(Base64.encode(md.digest(), 0));
+                Log.i(TAG, "printHashKey() Hash Key: " + hashKey);
+            }
+        } catch (NoSuchAlgorithmException e) {
+            Toast.makeText(this, ""+e, Toast.LENGTH_SHORT).show();
+            // Log.e(TAG, "printHashKey()", e);
+        } catch (Exception e) {
+            Toast.makeText(this, ""+e, Toast.LENGTH_SHORT).show();
+            //  Log.e(TAG, "printHashKey()", e);
+        }
+
 
         mContext=WelcomeActivity.this;
         viewPager = findViewById(R.id.view_pager);

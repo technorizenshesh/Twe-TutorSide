@@ -3,7 +3,7 @@ package com.tech.twe_tutorside.model;
 public class SaloonSpecialistModel {
 
     String name;
-    private boolean isSelected = false;
+    private boolean isSelected;
 
     public boolean isSelected() {
         return isSelected;
