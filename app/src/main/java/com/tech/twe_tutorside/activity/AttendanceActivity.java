@@ -42,7 +42,6 @@ public class AttendanceActivity extends AppCompatActivity implements FragmentLis
         weekly_TabtxtId.setOnClickListener(this);
         monthly_TabtxtId.setOnClickListener(this);
 
-
     }
 
     public void backAttendanceInit(View view) {
@@ -81,10 +80,7 @@ public class AttendanceActivity extends AppCompatActivity implements FragmentLis
                 weekly_TabtxtId.setTextColor(Color.parseColor("#05346d"));
                 monthly_TabtxtId.setTextColor(Color.parseColor("#000000"));
 
-
-
                 loadFragment(new WeeklyAttendanceFragment(this));
-
 
                 break;
 
@@ -98,13 +94,9 @@ public class AttendanceActivity extends AppCompatActivity implements FragmentLis
                 weekly_TabtxtId.setTextColor(Color.parseColor("#000000"));
                 monthly_TabtxtId.setTextColor(Color.parseColor("#05346d"));
 
-
-
                 loadFragment(new MonthlyAttendanceFragment(this));
 
-
                 break;
-
 
         }
 

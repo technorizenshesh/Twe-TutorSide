@@ -109,10 +109,10 @@ public class Activity_LoginOption extends AppCompatActivity implements GoogleApi
                 Log.i(TAG, "printHashKey() Hash Key: " + hashKey);
             }
         } catch (NoSuchAlgorithmException e) {
-            Toast.makeText(this, ""+e, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, ""+e,Toast.LENGTH_SHORT).show();
             // Log.e(TAG, "printHashKey()", e);
         } catch (Exception e) {
-            Toast.makeText(this, ""+e, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, ""+e,Toast.LENGTH_SHORT).show();
             //  Log.e(TAG, "printHashKey()", e);
         }
 

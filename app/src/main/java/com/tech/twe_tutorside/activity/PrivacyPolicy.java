@@ -102,6 +102,7 @@ public class PrivacyPolicy extends AppCompatActivity {
 
 
                     } else {
+
                         progressBar.setVisibility(View.GONE);
 
                         Toast.makeText(PrivacyPolicy.this, message, Toast.LENGTH_SHORT).show();
@@ -117,6 +118,7 @@ public class PrivacyPolicy extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
+
                 progressBar.setVisibility(View.GONE);
                 Toast.makeText(PrivacyPolicy.this, t.getMessage(), Toast.LENGTH_SHORT).show();
             }

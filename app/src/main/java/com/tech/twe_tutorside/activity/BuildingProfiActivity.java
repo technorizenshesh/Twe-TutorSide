@@ -10,7 +10,11 @@ import android.widget.TextView;
 import com.tech.twe_tutorside.Preference;
 import com.tech.twe_tutorside.R;
 
-public class BuildingProfiActivity extends AppCompatActivity {
+public class
+
+
+
+BuildingProfiActivity extends AppCompatActivity {
 
     TextView txt_name;
 
@@ -32,7 +36,6 @@ public class BuildingProfiActivity extends AppCompatActivity {
     }
 
     public void createProfi(View view) {
-
         startActivity(new Intent(BuildingProfiActivity.this,FillDetailsActivity.class));
     }
 }

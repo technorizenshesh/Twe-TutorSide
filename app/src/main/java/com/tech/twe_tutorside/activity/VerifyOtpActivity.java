@@ -305,7 +305,6 @@ public class VerifyOtpActivity extends AppCompatActivity {
                         Toast.makeText(mContext, "Failed"+e, Toast.LENGTH_SHORT).show();
                     }
                 });        // OnVerificationStateChangedCallbacks
-
     }
 
     private void signInWithPhoneAuthCredential(PhoneAuthCredential credential) {
@@ -343,6 +342,7 @@ public class VerifyOtpActivity extends AppCompatActivity {
                             Toast.makeText(mContext, "Otp Not match.", Toast.LENGTH_SHORT).show();
 
                             if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
+
                             }
 
                         }
