@@ -1,6 +1,9 @@
 package com.tech.twe_tutorside.utils;
 
 
+import java.util.concurrent.TimeUnit;
+
+import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -12,8 +15,13 @@ public class RetrofitClients {
 
 
     private RetrofitClients(){
+        OkHttpClient client = new OkHttpClient.Builder()
+                .connectTimeout(400, TimeUnit.SECONDS)
+                .readTimeout(400, TimeUnit.SECONDS).build();
+
         retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
+                .client(client)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
     }

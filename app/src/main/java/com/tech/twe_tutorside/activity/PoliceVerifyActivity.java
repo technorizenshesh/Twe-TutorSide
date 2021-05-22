@@ -1,7 +1,6 @@
 
 package com.tech.twe_tutorside.activity;
 
-
 import android.Manifest;
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -59,7 +58,6 @@ import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
 
 public class PoliceVerifyActivity extends AppCompatActivity {
 
@@ -300,8 +298,8 @@ public class PoliceVerifyActivity extends AppCompatActivity {
 
     private void tutorAddDetailsapi() {
 
-        //String Userid=Preference.get(PoliceVerifyActivity.this,Preference.KEY_USER_ID);
-        String Userid="70";
+        String Userid=Preference.get(PoliceVerifyActivity.this,Preference.KEY_USER_ID);
+       // String Userid="70";
         String Tutorcategory=Preference.get(PoliceVerifyActivity.this,Preference.KEY_tutor_category_id);
         String Tutorsubcategory=Preference.get(PoliceVerifyActivity.this,Preference.KEY_tutor_category_sub_id);
         String TutorsubjECTiD= Preference.get(PoliceVerifyActivity.this,Preference.KEY_tutor_category_subJECT_id);

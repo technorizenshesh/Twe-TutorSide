@@ -10,11 +10,7 @@ import android.widget.TextView;
 import com.tech.twe_tutorside.Preference;
 import com.tech.twe_tutorside.R;
 
-public class
-
-
-
-BuildingProfiActivity extends AppCompatActivity {
+public class BuildingProfiActivity extends AppCompatActivity {
 
     TextView txt_name;
 
@@ -28,6 +24,8 @@ BuildingProfiActivity extends AppCompatActivity {
        String User_Name =  Preference.get(BuildingProfiActivity.this, Preference.KEY_username);
 
         txt_name.setText("Welcome to TWE,"+User_Name+"!");
+
+
     }
 
     public void backFromBuildingProfile(View view) {

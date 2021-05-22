@@ -124,6 +124,7 @@ public class AccountDetails extends Fragment {
     }
 
     private void myProfile() {
+
         String UserId = Preference.get(getActivity(), Preference.KEY_USER_ID);
 
         Call<myprofile_model> call = RetrofitClients

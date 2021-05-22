@@ -7,6 +7,7 @@ import java.util.List;
 
 public class GetRequestModel {
 
+
     @SerializedName("result")
     @Expose
     private List<GetRequestModelData> result = null;
@@ -40,4 +41,5 @@ public class GetRequestModel {
     public void setStatus(String status) {
         this.status = status;
     }
+
 }

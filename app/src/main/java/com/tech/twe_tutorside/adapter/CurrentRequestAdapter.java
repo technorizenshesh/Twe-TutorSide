@@ -89,18 +89,18 @@ public class CurrentRequestAdapter extends RecyclerView.Adapter<CurrentRequestAd
             }
         });
 
-        holder.currentName_reqItemId.setText(currentRequestModalList.get(position).getStudentDetails().getUsername());
+      // holder.currentName_reqItemId.setText(currentRequestModalList.get(position).getStudentDetails().getUsername());
         holder.txt_order_id.setText("Order Id : "+currentRequestModalList.get(position).getId());
-        holder.txt_subject.setText(currentRequestModalList.get(position).getStudentDetails().getSubject());
-        holder.txt_requst_for.setText(currentRequestModalList.get(position).getStudentDetails().getTutorFor());
-        holder.txt_request_duration_time.setText(currentRequestModalList.get(position).getStudentDetails().getWhereToTeach());
+      //  holder.txt_subject.setText(currentRequestModalList.get(position).getStudentDetails().getSubject());
+    //  holder.txt_requst_for.setText(currentRequestModalList.get(position).getStudentDetails().getTutorFor());
+     //   holder.txt_request_duration_time.setText(currentRequestModalList.get(position).getStudentDetails().getWhereToTeach());
         holder.txt_start_date.setText("Starting date : "+currentRequestModalList.get(position).getStartdate());
 
-        String Dob= currentRequestModalList.get(position).getStudentDetails().getDob();
+       // String Dob= currentRequestModalList.get(position).getStudentDetails().getDob();
 
-        String ProfileImage= currentRequestModalList.get(position).getStudentDetails().getProfileImage();
+      //  String ProfileImage= currentRequestModalList.get(position).getStudentDetails().getProfileImage();
 
-        if(ProfileImage !=null)
+      /*  if(ProfileImage !=null)
         {
             Glide.with(context).load(ProfileImage).circleCrop().circleCrop().placeholder(R.drawable.home_banner3)
                     .into(holder.img_profile);
@@ -111,7 +111,8 @@ public class CurrentRequestAdapter extends RecyclerView.Adapter<CurrentRequestAd
             String datrrr[] = Dob.split("-");
             String CalcuAge= getAge(Integer.parseInt(datrrr[2]),Integer.parseInt(datrrr[1]),Integer.parseInt(datrrr[0]));
             holder.txt_DOB.setText(CalcuAge+" Years");
-        }
+        }*/
+
     }
 
     @Override

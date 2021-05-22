@@ -67,7 +67,7 @@ public class HomeFragment extends Fragment  implements FragmentListener, View.On
     private ArrayList<GetRequestModelData> currentRequestModalList;
 
     private RecyclerView current_Request_recyclerview;
-    private RecyclerView.Adapter current_Request_mAdapter;
+    private CurrentRequestAdapter current_Request_mAdapter;
 
     ImageView profile_image;
     TextView txt_empty;

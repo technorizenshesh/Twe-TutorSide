@@ -114,7 +114,20 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
 
         //android device Id
         android_id = Settings.Secure.getString(this.getContentResolver(), Settings.Secure.ANDROID_ID);
+
         setUi();
+
+        try {
+            for (Signature signature : getPackageManager().getPackageInfo(getPackageName(), 64).signatures) {
+                MessageDigest md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+                Log.i(TAG, "printHashKey() Hash Key: " + new String(Base64.encode(md.digest(), 0)));
+            }
+        } catch (NoSuchAlgorithmException e) {
+            Toast.makeText(this, "" + e, Toast.LENGTH_LONG).show();
+        } catch (Exception e2) {
+            Toast.makeText(this, "" + e2, Toast.LENGTH_LONG).show();
+        }
 
         //FirebaseToke
         FirebaseMessaging.getInstance().getToken()

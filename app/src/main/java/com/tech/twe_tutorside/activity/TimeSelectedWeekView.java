@@ -46,7 +46,8 @@ public class TimeSelectedWeekView extends AppCompatActivity {
     private RecyclerView recycler_available_slot_saturday;
     private RecyclerView recycler_available_slot_sunday;
 
-    //Array List week View
+    //
+    // Array List week View
     private ArrayList<String> modelListTime_monday = new ArrayList<>();
     private ArrayList<String> modelListTime_tuesday = new ArrayList<>();
     private ArrayList<String> modelListTime_wednesDay= new ArrayList<>();

@@ -710,7 +710,7 @@
 
             <LinearLayout
                 android:id="@+id/ll_img_set"
-                android:visibility="visible"
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_70sdp"
                 android:layout_marginLeft="@dimen/margin_25"
