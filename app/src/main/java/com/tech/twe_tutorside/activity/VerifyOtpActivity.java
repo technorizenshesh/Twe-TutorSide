@@ -158,7 +158,6 @@ public class VerifyOtpActivity extends AppCompatActivity {
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
             }
-
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (s.length() == 1) {
@@ -166,7 +165,6 @@ public class VerifyOtpActivity extends AppCompatActivity {
                     binding.et4.requestFocus();
                 }
             }
-
             @Override
             public void afterTextChanged(Editable s) {
             }
@@ -297,6 +295,7 @@ public class VerifyOtpActivity extends AppCompatActivity {
                         Toast.makeText(mContext, ""+phoneAuthCredential.getSmsCode(), Toast.LENGTH_SHORT).show();
 
                         signInWithPhoneAuthCredential(phoneAuthCredential);
+
                     }
 
                     @Override
@@ -335,6 +334,7 @@ public class VerifyOtpActivity extends AppCompatActivity {
                             {
 
                               signUpMethod(UserName,email,password,phone,latitude,longitude);
+
                             }
 
                         } else {

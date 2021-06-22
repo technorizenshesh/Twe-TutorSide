@@ -17,6 +17,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.DragEvent;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -24,6 +25,7 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AutoCompleteTextView;
 import android.widget.BaseAdapter;
@@ -89,7 +91,7 @@ public class GooglePlacesAutocompleteActivity extends FragmentActivity implement
     public String order_landmarkadd;
  //   public AppointmentFragment fragment;
     int PERMISSION_ID = 44;
-    private AutoCompleteTextView gettypedlocation;
+    private TextView gettypedlocation;
     private int count = 0;
 
     private String order_landmarkadd1;
@@ -130,7 +132,9 @@ public class GooglePlacesAutocompleteActivity extends FragmentActivity implement
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_place_address);
+
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) !=
@@ -196,9 +200,23 @@ public class GooglePlacesAutocompleteActivity extends FragmentActivity implement
         edittext_location = findViewById(R.id.edittext_location);
         myAnim = AnimationUtils.loadAnimation(this, R.anim.bounce);
         done_text = findViewById(R.id.done_text);
+
+        /*gettypedlocation.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if(actionId== EditorInfo.IME_ACTION_DONE) {
+                    //do Whatever you Want to do
+                    Toast.makeText(mContext, ""+"hide", Toast.LENGTH_SHORT).show();
+                    hideKeyboardFrom(GooglePlacesAutocompleteActivity.this,gettypedlocation);
+                }
+                return true;
+            }
+        });*/
+
         done_text.setOnClickListener(v -> {
+            edittext_location.getText().toString().trim();
            // AppointmentFragment.address.setText(edittext_location.getText().toString().trim());
-            finish();
+            //finish();
         });
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -218,7 +236,6 @@ public class GooglePlacesAutocompleteActivity extends FragmentActivity implement
             edittext_location.setVisibility(View.VISIBLE);
             gettypedlocation.setVisibility(View.GONE);
         }*/
-        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
         autocompleteView();
     }
 
@@ -344,8 +361,8 @@ public class GooglePlacesAutocompleteActivity extends FragmentActivity implement
         edittext_location_get = edittext_location.getText().toString().trim();
         FinalAddress =edittext_location_get;
         gettypedlocation.requestFocus();
-        gettypedlocation.setThreshold(THRESHOLD);
-        gettypedlocation.addTextChangedListener(new TextWatcher() {
+      //  gettypedlocation.setThreshold(THRESHOLD);
+       gettypedlocation.addTextChangedListener(new TextWatcher() {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
@@ -368,21 +385,20 @@ public class GooglePlacesAutocompleteActivity extends FragmentActivity implement
                 }
             }
         });
+
+        
     }
 
     private void loadData(String s) {
-
         try {
-
             if (count == 0) {
-
                 List<String> l1 = new ArrayList<>();
                 if (s == null) {
 
                 } else {
                     l1.add(s);
                     GeoAutoCompleteAdapter ga = new GeoAutoCompleteAdapter(GooglePlacesAutocompleteActivity.this, l1, "" + latiute, "" + logitiute);
-                    gettypedlocation.setAdapter(ga);
+                 //   gettypedlocation.setAdapter(ga);
                     ga.notifyDataSetChanged();
                 }
             }
@@ -609,7 +625,7 @@ public class GooglePlacesAutocompleteActivity extends FragmentActivity implement
 
                         } else {
                             gettypedlocation.setText("" + l2.get(i));
-                            gettypedlocation.dismissDropDown();
+                         //   gettypedlocation.dismissDropDown();
                             order_landmarkadd = gettypedlocation.getText().toString();
                           //  AppointmentFragment.address.setText(order_landmarkadd);
                            // finish();
@@ -635,7 +651,7 @@ public class GooglePlacesAutocompleteActivity extends FragmentActivity implement
                                  FinalAddress ="" + l2.get(i);
 
                             gettypedlocation.setText("" + l2.get(i));
-                            gettypedlocation.dismissDropDown();
+                        //    gettypedlocation.dismissDropDown();
                             order_landmarkadd = gettypedlocation.getText().toString();
                             FinalAddress =order_landmarkadd;
                           //  AppointmentFragment.address.setText(order_landmarkadd);
@@ -757,6 +773,11 @@ public class GooglePlacesAutocompleteActivity extends FragmentActivity implement
                 Toast.makeText(GooglePlacesAutocompleteActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    public static void hideKeyboardFrom(Context context, View view) {
+        InputMethodManager imm = (InputMethodManager) context.getSystemService(Activity.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
 }

@@ -54,19 +54,13 @@ public class AttendanceActivity extends AppCompatActivity implements FragmentLis
         switch (view.getId()) {
 
             case R.id.daily_TabtxtId:
-
-
-
-
                 daily_TabtxtId.setBackgroundDrawable(getResources().getDrawable(R.drawable.color_yellowbg));
                 weekly_TabtxtId.setBackgroundDrawable(getResources().getDrawable(R.drawable.color_gray));
                 monthly_TabtxtId.setBackgroundDrawable(getResources().getDrawable(R.drawable.color_gray));
                 daily_TabtxtId.setTextColor(Color.parseColor("#05346d"));
                 weekly_TabtxtId.setTextColor(Color.parseColor("#000000"));
                 monthly_TabtxtId.setTextColor(Color.parseColor("#000000"));
-
                 loadFragment(new DailyAttendanceFragment(this));
-
 
                 break;
 
@@ -97,20 +91,16 @@ public class AttendanceActivity extends AppCompatActivity implements FragmentLis
                 loadFragment(new MonthlyAttendanceFragment(this));
 
                 break;
-
         }
 
     }
 
     private void loadFragment(Fragment fragment) {
         getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout_attendance, fragment).commit();
-
     }
-
 
     @Override
     public void click(Fragment fragment) {
         loadFragment(fragment);
-
     }
 }

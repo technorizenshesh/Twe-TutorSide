@@ -49,7 +49,7 @@ public class CategoryFragment1 extends Fragment {
 
     private RecyclerView recycler_get_tutor_category;
     tutor_category_Adapter mAdapter;
-    private ArrayList<TutorCategoryModel> modelList = new ArrayList<>();
+        private ArrayList<TutorCategoryModel> modelList = new ArrayList<>();
 
     private String teach_distance="";
     private String TimeZone="";

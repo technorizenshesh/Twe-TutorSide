@@ -84,6 +84,7 @@ public class SignUpActivity extends AppCompatActivity {
             longitude = String.valueOf(gpsTracker.getLongitude());
 
         }else{
+
             gpsTracker.showSettingsAlert();
         }
 

@@ -9,7 +9,6 @@
     tools:context=".activity.SignUpActivity"
     >
 
-
     <ProgressBar
         android:layout_width="40dp"
         android:layout_height="40dp"
@@ -377,10 +376,10 @@
                     android:layout_width="@dimen/margin_280"
                     android:layout_height="@dimen/_45dp"
                     android:layout_marginLeft="@dimen/margin_20"
-                    android:layout_marginRight="@dimen/margin_20"
                     android:layout_marginTop="@dimen/margin_20"
-                    android:gravity="center"
+                    android:layout_marginRight="@dimen/margin_20"
                     android:background="@drawable/edit_bgbutton"
+                    android:gravity="center"
                     android:orientation="vertical">
 
                     <TextView
@@ -394,8 +393,6 @@
                         android:textStyle="bold" />
 
                 </LinearLayout>
-
-
 
                 <LinearLayout
                     android:layout_marginBottom="@dimen/_70sdp"

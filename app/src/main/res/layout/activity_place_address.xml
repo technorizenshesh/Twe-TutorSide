@@ -71,7 +71,7 @@
 
                 </ImageView>
 
-                <AutoCompleteTextView
+                <TextView
                     android:id="@+id/gettypedlocation"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -79,9 +79,10 @@
                     android:layout_toLeftOf="@+id/clear_pick_ic"
                     android:background="@null"
                     android:hint="search"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
                     android:inputType="textNoSuggestions"
                     android:padding="5dp"
-                    android:singleLine="true"
                     android:textColor="#000"
                     android:textColorHint="#636262" />
 
@@ -113,6 +114,7 @@
             </LinearLayout>
 
             <TextView
+                android:visibility="gone"
                 android:id="@+id/done_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -139,7 +141,7 @@
             android:layout_marginLeft="@dimen/margin_20"
             android:layout_marginTop="@dimen/margin_20"
             android:layout_marginRight="@dimen/margin_20"
-            android:layout_marginBottom="32dp"
+            android:layout_marginBottom="38dp"
             android:background="@drawable/edit_bgbutton"
             android:gravity="center"
             android:onClick="loginInit"

@@ -20,6 +20,9 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
 
+
+        <activity android:name=".NewMap.GoogleMapNewActivity"/>
+
         <activity android:name=".activity.TermsCondition">
 
         </activity>
@@ -96,16 +99,20 @@
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat" />
 
-        <activity android:name=".activity.GooglePlacesAutocompleteActivity" />
+        <activity android:name=".activity.GooglePlacesAutocompleteActivity"
+            android:windowSoftInputMode="stateHidden"   />
 
         <service
             android:name=".Notification.MyFirebaseMessagingService"
             android:permission="com.google.android.c2dm.permission.SEND">
+
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
             </intent-filter>
+
         </service>
+
     </application>
 
 </manifest>
