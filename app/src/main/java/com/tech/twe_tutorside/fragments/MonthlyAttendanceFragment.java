@@ -28,6 +28,8 @@ public class MonthlyAttendanceFragment extends Fragment {
     FragmentListener listener;
     Context mcontext=getActivity();
 
+
+
     public MonthlyAttendanceFragment(FragmentListener listener) {
         this.listener = listener;
     }

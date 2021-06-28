@@ -97,7 +97,7 @@ public class Activity_LoginOption extends AppCompatActivity implements GoogleApi
         RR_google= findViewById(R.id.RR_google);
         progressBar= findViewById(R.id.progressBar);
         RR_loign_faceBook= findViewById(R.id.RR_loign_faceBook);
-        sessionManager = new SessionManager(Activity_LoginOption.this);
+        sessionManageFr = new SessionManager(Activity_LoginOption.this);
 
 
         try {

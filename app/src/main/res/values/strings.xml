@@ -40,4 +40,8 @@
     <string name="sub_category_name">Sub Category Name</string>
     <string name="today_ni_am_going_to_teach">Today,\nI am going to TEACH</string>
     <string name="what_i_love">What I love</string>
+
+    <!--places api key-->
+    <string name="place_api_key">AIzaSyC4Eg_qGdkZrcW-td6QsmJAk2g4nzPaat0</string>
+
 </resources>

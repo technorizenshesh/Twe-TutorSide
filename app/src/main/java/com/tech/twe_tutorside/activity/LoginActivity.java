@@ -48,6 +48,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.tech.twe_tutorside.GPSTracker;
+import com.tech.twe_tutorside.NewMap.GoogleMapNewActivity;
 import com.tech.twe_tutorside.Preference;
 import com.tech.twe_tutorside.R;
 import com.tech.twe_tutorside.utils.RetrofitClients;
@@ -339,7 +340,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
 
     public void loginInit(View view) {
            validation();
-     //  startActivity(new Intent(LoginActivity.this, HomeActvity.class));
+      //startActivity(new Intent(LoginActivity.this, GoogleMapNewActivity.class));
     }
 
     public void signupInit(View view) {
@@ -484,7 +485,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                         Preference.save(LoginActivity.this, Preference.KEY_USER_ID,UserId);
                         Preference.save(LoginActivity.this, Preference.KEY_username,username);
 
-                        Toast.makeText(LoginActivity.this, message, Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(LoginActivity.this, message, Toast.LENGTH_SHORT).show();
 
                         if(check_status.equalsIgnoreCase("1"))
                         {
@@ -497,6 +498,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                         }
 
                     } else {
+
                         Toast.makeText(LoginActivity.this, result, Toast.LENGTH_SHORT).show();
 
                     }

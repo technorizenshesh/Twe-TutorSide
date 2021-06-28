@@ -17,21 +17,14 @@ public class PaymentStatementActivity extends AppCompatActivity {
     TextView upcoming_txtId, totalTab_txtId;
     ImageView ivBack;
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment_statement);
 
-
-
     }
 
-
     public void OliviaParkerInit(View view) {
-
         startActivity(new Intent(PaymentStatementActivity.this,TutorPaymentDetailsActivity.class));
     }
 }

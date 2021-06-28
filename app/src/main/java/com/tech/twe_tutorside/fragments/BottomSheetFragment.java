@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.tech.twe_tutorside.GPSTracker;
+import com.tech.twe_tutorside.NewMap.GoogleMapNewActivity;
 import com.tech.twe_tutorside.Preference;
 import com.tech.twe_tutorside.R;
 import com.tech.twe_tutorside.SessionManager;
@@ -141,7 +142,8 @@ public class BottomSheetFragment extends BottomSheetDialogFragment implements Vi
                 dismiss();
                 break;
                 case R.id.LL_CurrentLocation:
-                    Intent intent = new Intent(getActivity(), GooglePlacesAutocompleteActivity.class);
+                   // Intent intent = new Intent(getActivity(), GooglePlacesAutocompleteActivity.class);
+                    Intent intent = new Intent(getActivity(), GoogleMapNewActivity.class);
                     startActivityForResult(intent, REQUEST_CODE);
                 break;
         }
